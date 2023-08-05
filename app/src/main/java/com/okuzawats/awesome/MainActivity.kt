@@ -3,80 +3,70 @@ package com.okuzawats.awesome
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.BottomAppBar
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.okuzawats.awesome.ui.theme.AwesomeTheme
 
 class MainActivity : ComponentActivity() {
+    @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             MaterialTheme {
-                Box(
-                    contentAlignment = Alignment.BottomEnd,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .fillMaxHeight()
-                ) {
-                    Box(
-                        modifier = Modifier
-                            .padding(
-                                bottom = 16.dp,
-                                end = 16.dp,
-                            )
-                    ) {
-                        FloatingActionButton(
-                            onClick = { /*TODO*/ },
-                            containerColor = MaterialTheme.colorScheme.secondary,
-                            shape = RoundedCornerShape(16.dp),
-                            modifier = Modifier
-                                .width(56.dp)
-                                .height(56.dp)
-                        ) {
-                            Icon(
-                                painter = painterResource(
-                                    id = R.drawable.baseline_add_24,
-                                ),
-                                contentDescription = "add",
+                Scaffold(
+                    bottomBar = {
+                        // FIXME BottomAppBarの引数にActionとFABを渡すように修正する。
+                        //  現在、上記のコードがビルドエラーとってしまうため、自力で配置する。
+                        BottomAppBar {
+                            Row(
                                 modifier = Modifier
-                                    .width(24.dp)
-                                    .height(24.dp)
-                            )
+                                    .fillMaxWidth()
+                                    .padding(top = 12.dp, end = 16.dp, bottom = 12.dp),
+                            ) {
+                                Spacer(
+                                    modifier = Modifier
+                                        .weight(1f)
+                                        .fillMaxHeight(),
+                                )
+                                FloatingActionButton(
+                                    onClick = {
+                                        /*TODO*/
+                                    },
+                                ) {
+                                    Icon(
+                                        painter = painterResource(R.drawable.baseline_add_24),
+                                        contentDescription = "add", // TODO contentDescriptionの設定
+                                        modifier = Modifier
+                                            .width(24.dp)
+                                            .height(24.dp),
+                                    )
+
+                                }
+                            }
                         }
-                    }
+                    },
+                ) { padding ->
+                    Text(
+                        text = "text",
+                        modifier = Modifier
+                            .padding(padding),
+                    )
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    AwesomeTheme {
-        Greeting("Android")
     }
 }
