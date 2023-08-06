@@ -1,4 +1,4 @@
-package com.okuzawats.awesome
+package com.okuzawats.awesome.ui
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import com.okuzawats.awesome.R
 
 /**
  * アプリ内で使用するBottomAppBar

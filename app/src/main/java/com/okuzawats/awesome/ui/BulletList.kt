@@ -1,4 +1,4 @@
-package com.okuzawats.awesome
+package com.okuzawats.awesome.ui
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
