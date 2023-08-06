@@ -1,6 +1,7 @@
 package com.okuzawats.awesome.ui.component
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -15,6 +16,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.okuzawats.awesome.presenter.bulletlist.BulletListPresenter
 import com.okuzawats.awesome.presenter.bulletlist.BulletListState
+import com.okuzawats.awesome.presenter.bulletlist.BulletListUiEvent
 import org.koin.compose.koinInject
 
 /**
@@ -38,7 +40,10 @@ fun BulletList(
                         modifier = Modifier
                             .padding(all = 8.dp)
                             .clip(shape = RoundedCornerShape(4.dp))
-                            .background(color = Color.White),
+                            .background(color = Color.White)
+                            .clickable {
+                               uiState.eventSink(BulletListUiEvent.OnBulletClick)
+                            },
                     ) {
                         Text(
                             text = uiState.bullets[it],
