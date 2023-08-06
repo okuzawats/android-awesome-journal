@@ -63,6 +63,9 @@ dependencies {
     implementation 'com.slack.circuit:circuit-runtime-presenter:0.12.1'
     implementation 'com.slack.circuit:circuit-runtime-ui:0.12.1'
 
+    implementation "io.insert-koin:koin-android:3.4.3"
+    implementation "io.insert-koin:koin-compose:1.0.4"
+
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
