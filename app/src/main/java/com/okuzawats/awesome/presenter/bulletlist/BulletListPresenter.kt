@@ -1,4 +1,4 @@
-package com.okuzawats.awesome
+package com.okuzawats.awesome.presenter.bulletlist
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue

@@ -1,4 +1,4 @@
-package com.okuzawats.awesome
+package com.okuzawats.awesome.presenter.bulletlist
 
 import com.slack.circuit.runtime.CircuitUiState
 
