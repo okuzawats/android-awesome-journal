@@ -1,4 +1,4 @@
-package com.okuzawats.awesome.ui
+package com.okuzawats.awesome.ui.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Row
