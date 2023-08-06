@@ -15,8 +15,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.okuzawats.awesome.presenter.bulletlist.BulletListPresenter
-import com.okuzawats.awesome.presenter.bulletlist.BulletListState
-import com.okuzawats.awesome.presenter.bulletlist.BulletListUiEvent
+import com.okuzawats.awesome.presenter.bulletlist.event.OnBulletClick
+import com.okuzawats.awesome.presenter.bulletlist.state.BulletList
 import org.koin.compose.koinInject
 
 /**
@@ -28,7 +28,7 @@ fun BulletList(
     presenter: BulletListPresenter = koinInject(),
 ) {
     when (val uiState = presenter.present()) {
-        is BulletListState.BulletList -> {
+        is BulletList -> {
             LazyColumn(
                 modifier = modifier
                     .fillMaxWidth()
@@ -42,7 +42,7 @@ fun BulletList(
                             .clip(shape = RoundedCornerShape(4.dp))
                             .background(color = Color.White)
                             .clickable {
-                               uiState.eventSink(BulletListUiEvent.OnBulletClick)
+                               uiState.eventSink(OnBulletClick)
                             },
                     ) {
                         Text(

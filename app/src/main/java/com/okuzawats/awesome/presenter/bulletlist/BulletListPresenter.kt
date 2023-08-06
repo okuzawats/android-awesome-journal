@@ -4,6 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import com.okuzawats.awesome.presenter.bulletlist.state.BulletList
+import com.okuzawats.awesome.presenter.bulletlist.state.BulletListState
 import com.slack.circuit.runtime.presenter.Presenter
 
 /**
@@ -16,7 +18,7 @@ class BulletListPresenter : Presenter<BulletListState> {
             mutableStateOf((10 ..< 100).map { "ABCDEFGHIJKLMNOPQRSTUVWXYZ" })
         }
 
-        return BulletListState.BulletList(bullets) {
+        return BulletList(bullets) {
             println("on bullet clicked.")
         }
     }
