@@ -10,25 +10,24 @@ import com.okuzawats.awesome.domain.bullet.Bullet
 import com.okuzawats.awesome.domain.bullet.BulletRepository
 import com.okuzawats.awesome.presenter.bulletlist.state.BulletList
 import com.okuzawats.awesome.presenter.bulletlist.state.BulletListState
-import com.slack.circuit.runtime.presenter.Presenter
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import kotlin.coroutines.CoroutineContext
 
 /**
  * Bullet一覧画面のPresenter
  */
 class BulletListPresenter(
     private val bulletRepository: BulletRepository,
-) : Presenter<BulletListState>, CoroutineScope {
+) : AwesomePresenter<BulletListState>, CoroutineScope {
+    /* AwesomePresenter */
+    override val job = Job()
 
-    override val coroutineContext: CoroutineContext
-        get() = job + Dispatchers.IO
+    override fun dispose() {
+        job.cancel()
+    }
 
-    private val job = Job()
-
+    /* com.slack.circuit.runtime.presenter.Presenter */
     @Composable
     override fun present(): BulletListState {
         var bullets: List<Bullet> by remember { mutableStateOf(emptyList()) }
@@ -42,9 +41,5 @@ class BulletListPresenter(
                 bullets = bulletRepository.getBullets()
             }
         }
-    }
-
-    fun conceal() {
-        job.cancel()
     }
 }

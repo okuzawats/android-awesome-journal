@@ -63,7 +63,7 @@ fun BulletList(
 
     DisposableEffect(lifecycleOwner) {
         onDispose {
-            presenter.conceal()
+            presenter.dispose()
         }
     }
 }
