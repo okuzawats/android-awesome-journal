@@ -11,15 +11,24 @@ import com.okuzawats.awesome.domain.bullet.BulletRepository
 import com.okuzawats.awesome.presenter.bulletlist.state.BulletList
 import com.okuzawats.awesome.presenter.bulletlist.state.BulletListState
 import com.slack.circuit.runtime.presenter.Presenter
-import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
 
 /**
  * Bullet一覧画面のPresenter
  */
 class BulletListPresenter(
     private val bulletRepository: BulletRepository,
-) : Presenter<BulletListState> {
+) : Presenter<BulletListState>, CoroutineScope {
+
+    override val coroutineContext: CoroutineContext
+        get() = job + Dispatchers.IO
+
+    private val job = Job()
+
     @Composable
     override fun present(): BulletListState {
         var bullets: List<Bullet> by remember { mutableStateOf(emptyList()) }
@@ -29,10 +38,13 @@ class BulletListPresenter(
         }
 
         return BulletList(bullets) {
-            // FIXME GlobalScopeを使わないように修正する
-            GlobalScope.launch {
+            launch {
                 bullets = bulletRepository.getBullets()
             }
         }
+    }
+
+    fun conceal() {
+        job.cancel()
     }
 }
