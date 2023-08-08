@@ -11,6 +11,8 @@ import com.okuzawats.awesome.domain.bullet.BulletRepository
 import com.okuzawats.awesome.presenter.bulletlist.state.BulletList
 import com.okuzawats.awesome.presenter.bulletlist.state.BulletListState
 import com.slack.circuit.runtime.presenter.Presenter
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 /**
  * Bullet一覧画面のPresenter
@@ -27,7 +29,10 @@ class BulletListPresenter(
         }
 
         return BulletList(bullets) {
-            println("on bullet clicked.")
+            // FIXME GlobalScopeを使わないように修正する
+            GlobalScope.launch {
+                bullets = bulletRepository.getBullets()
+            }
         }
     }
 }
