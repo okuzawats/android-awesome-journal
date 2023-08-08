@@ -6,6 +6,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import com.okuzawats.awesome.presenter.AwesomePresenter
 import com.okuzawats.awesome.domain.bullet.Bullet
 import com.okuzawats.awesome.domain.bullet.BulletRepository
 import com.okuzawats.awesome.presenter.bulletlist.state.BulletList
