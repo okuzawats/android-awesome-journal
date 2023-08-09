@@ -34,7 +34,7 @@ fun BulletList(
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(56.dp),
-                        bulletText = uiState.bullets[i].text,
+                        bullet = uiState.bullets[i],
                         onBulletClick = {
                             uiState.eventSink(OnBulletClick)
                         },

@@ -21,25 +21,30 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.okuzawats.awesome.R
+import com.okuzawats.awesome.domain.bullet.Bullet
+import java.util.UUID
 
 /**
  * Bullet 1つを表示するComposable
  *
- * TODO: Bulletを受け取り、コールバックからもBulletを返すように修正
- * @param bulletText 表示されるテキスト
+ * @param bullet 表示するBullet
  * @param onBulletClick Bullet 1つがタップされた時に発火するイベント
  */
 @Composable
 fun BulletListRow(
     modifier: Modifier = Modifier,
-    bulletText: String,
-    onBulletClick: () -> Unit,
+    bullet: Bullet,
+    onBulletClick: (Bullet) -> Unit,
 ) {
     Column {
         Row(
             verticalAlignment = Alignment.CenterVertically,
             modifier = modifier
-                .clickable(onClick = onBulletClick),
+                .clickable(
+                    onClick = {
+                        onBulletClick(bullet)
+                    },
+                ),
         ) {
             Spacer(
                 modifier = Modifier
@@ -60,7 +65,7 @@ fun BulletListRow(
                     .width(16.dp),
             )
             Text(
-                text = bulletText,
+                text = bullet.text,
                 modifier = Modifier
                     .padding(all = 8.dp),
             )
@@ -82,7 +87,7 @@ fun BulletListRow(
 @Composable
 fun BulletListRow_withText() {
     BulletListRow(
-        bulletText = "text",
+        bullet = Bullet(id = UUID.randomUUID(), text = "text", done = false),
         onBulletClick = {},
     )
 }
