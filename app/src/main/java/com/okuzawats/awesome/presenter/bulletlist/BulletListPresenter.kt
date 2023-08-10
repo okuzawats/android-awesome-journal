@@ -12,7 +12,7 @@ import com.okuzawats.awesome.domain.bullet.BulletRepository
 import com.okuzawats.awesome.presenter.bulletlist.state.BulletList
 import com.okuzawats.awesome.presenter.bulletlist.state.BulletListState
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Job
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 
 /**
@@ -22,10 +22,8 @@ class BulletListPresenter(
     private val bulletRepository: BulletRepository,
 ) : AwesomePresenter<BulletListState>, CoroutineScope {
     /* AwesomePresenter */
-    override val job = Job()
-
     override fun dispose() {
-        job.cancel()
+        cancel()
     }
 
     /* com.slack.circuit.runtime.presenter.Presenter */
