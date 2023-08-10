@@ -1,10 +1,15 @@
 package com.okuzawats.awesome.ui.component
 
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.unit.dp
@@ -25,20 +30,36 @@ fun BulletList(
 ) {
     when (val uiState = presenter.present()) {
         is BulletList -> {
-            LazyColumn(
-                modifier = modifier
-                    .fillMaxWidth(),
-            ) {
-                items(uiState.count) { i ->
-                    BulletListRow(
+            Column {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(56.dp)
+                        .padding(16.dp),
+                ) {
+                    Text(
+                        // TODO formatterを適用する
+                        text = uiState.date.toString(),
                         modifier = Modifier
-                            .fillMaxWidth()
-                            .height(56.dp),
-                        bullet = uiState.bullets[i],
-                        onBulletClick = {
-                            uiState.eventSink(OnBulletClick)
-                        },
+                            .align(Alignment.Center)
+                            .fillMaxWidth(),
                     )
+                }
+                LazyColumn(
+                    modifier = modifier
+                        .fillMaxWidth(),
+                ) {
+                    items(uiState.count) { i ->
+                        BulletListRow(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(56.dp),
+                            bullet = uiState.bullets[i],
+                            onBulletClick = {
+                                uiState.eventSink(OnBulletClick)
+                            },
+                        )
+                    }
                 }
             }
         }

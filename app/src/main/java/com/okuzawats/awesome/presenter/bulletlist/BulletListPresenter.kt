@@ -14,6 +14,7 @@ import com.okuzawats.awesome.presenter.bulletlist.state.BulletListState
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
+import java.util.Date
 
 /**
  * Bullet一覧画面のPresenter
@@ -29,13 +30,17 @@ class BulletListPresenter(
     /* com.slack.circuit.runtime.presenter.Presenter */
     @Composable
     override fun present(): BulletListState {
+        var date: Date by remember { mutableStateOf(Date()) }
         var bullets: List<Bullet> by remember { mutableStateOf(emptyList()) }
 
         LaunchedEffect(Unit) {
             bullets = bulletRepository.getBullets()
         }
 
-        return BulletList(bullets) {
+        return BulletList(
+            date = date,
+            bullets = bullets,
+        ) {
             launch {
                 bullets = bulletRepository.getBullets()
             }
