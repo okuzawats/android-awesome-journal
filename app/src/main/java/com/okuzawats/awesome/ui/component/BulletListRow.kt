@@ -75,7 +75,7 @@ fun BulletListRow(
             )
         }
         Divider(
-            color = MaterialTheme.colorScheme.secondary,
+            color = MaterialTheme.colorScheme.outlineVariant,
             modifier = Modifier
                 .fillMaxWidth()
                 .height(1.dp),
