@@ -9,21 +9,21 @@ Android用のジャーナルアプリ「**Awesome Journal**」開発用リポジ
 
 ## ADR
 
-Architecture Decision Records by CLI with [npryce/adr-tools](https://github.com/npryce/adr-tools).
+[npryce/adr-tools](https://github.com/npryce/adr-tools)を用いて、CLIによりADR（Architecture Decision Records）を作成・更新する。
 
-Install adr-tools with Homebrew.
+Homebrewを用いて `adr-tools` をインストールする。
 
 ```console
 $ brew install adr-tools
 ```
 
-Create new ADR.
+ADRを作成する。
 
 ```console
 $ adr new Implement as Unix shell scripts
 ```
 
-For help.
+ヘルプを表示する。
 
 ```console
 $ adr help
