@@ -1,4 +1,4 @@
-package com.okuzawats.awesome.ui.component
+package com.okuzawats.awesome.ui.screen
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -17,6 +17,7 @@ import androidx.lifecycle.LifecycleOwner
 import com.okuzawats.awesome.presenter.bulletlist.BulletListPresenter
 import com.okuzawats.awesome.presenter.bulletlist.event.OnBulletClick
 import com.okuzawats.awesome.presenter.bulletlist.state.BulletList
+import com.okuzawats.awesome.ui.component.BulletListRow
 import org.koin.compose.koinInject
 
 /**

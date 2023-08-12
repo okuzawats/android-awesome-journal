@@ -10,7 +10,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import com.okuzawats.awesome.ui.component.AwesomeBottomAppBar
-import com.okuzawats.awesome.ui.component.BulletList
+import com.okuzawats.awesome.ui.screen.BulletList
 
 class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterial3Api::class)
