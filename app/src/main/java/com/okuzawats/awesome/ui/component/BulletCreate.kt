@@ -8,8 +8,10 @@ import androidx.compose.runtime.Composable
  * Bullet作成画面
  */
 @Composable
-fun BulletCreate() {
+fun BulletCreate(
+    message: String,
+) {
     Column {
-        Text("Create Bullet Here")
+        Text(message)
     }
 }

@@ -6,9 +6,11 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.okuzawats.awesome.ui.component.AwesomeBottomAppBar
 import com.okuzawats.awesome.ui.component.BulletCreate
 import com.okuzawats.awesome.ui.screen.BulletList
@@ -36,14 +38,26 @@ fun MainScreen() {
                 composable(
                     route = MainNavigation.BulletList.toString(),
                 ) {
-                    BulletList {
-                        navController.navigate(MainNavigation.BulletEdit.toString())
-                    }
+                    BulletList(
+                        onBulletClick = { bullet ->
+                            navController.navigate("${MainNavigation.BulletEdit}/${bullet.text}")
+                        }
+                    )
                 }
                 composable(
-                    route = MainNavigation.BulletEdit.toString(),
+                    route = "${MainNavigation.BulletEdit}/{bullet}",
+                    arguments = listOf(
+                        navArgument("bullet") {
+                            type = NavType.StringType
+                            nullable = false
+                        }
+                    ),
                 ) {
-                    BulletCreate()
+                    val message = it.arguments?.getString("bullet")
+                        ?: throw IllegalArgumentException()
+                    BulletCreate(
+                        message = message,
+                    )
                 }
             }
         }
