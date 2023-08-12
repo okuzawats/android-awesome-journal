@@ -1,7 +1,6 @@
 package com.okuzawats.awesome.presenter
 
-import com.slack.circuit.runtime.CircuitUiState
-import com.slack.circuit.runtime.presenter.Presenter
+import androidx.compose.runtime.Composable
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlin.coroutines.CoroutineContext
@@ -9,7 +8,7 @@ import kotlin.coroutines.CoroutineContext
 /**
  * Coroutinesを呼び出し可能な[com.slack.circuit.runtime.presenter.Presenter]
  */
-interface AwesomePresenter<T : CircuitUiState> : Presenter<T>, CoroutineScope {
+interface AwesomePresenter<T : UiState> : CoroutineScope {
     /**
      * CoroutinesのContext
      *
@@ -17,6 +16,12 @@ interface AwesomePresenter<T : CircuitUiState> : Presenter<T>, CoroutineScope {
      */
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.IO
+
+    /**
+     * UiStateを返すComposable関数
+     */
+    @Composable
+    fun present(): UiState
 
     /**
      * Presenterの破棄時に呼び出すべき処理を実装する。

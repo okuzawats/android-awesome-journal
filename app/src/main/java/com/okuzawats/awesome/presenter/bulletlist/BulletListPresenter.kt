@@ -22,12 +22,6 @@ import java.util.Date
 class BulletListPresenter(
     private val bulletRepository: BulletRepository,
 ) : AwesomePresenter<BulletListState>, CoroutineScope {
-    /* AwesomePresenter */
-    override fun dispose() {
-        cancel()
-    }
-
-    /* com.slack.circuit.runtime.presenter.Presenter */
     @Composable
     override fun present(): BulletListState {
         var date: Date by remember { mutableStateOf(Date()) }
@@ -45,5 +39,9 @@ class BulletListPresenter(
                 bullets = bulletRepository.getBullets()
             }
         }
+    }
+
+    override fun dispose() {
+        cancel()
     }
 }
