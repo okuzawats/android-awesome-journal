@@ -42,6 +42,7 @@ class BulletListPresenter(
     }
 
     override fun dispose() {
-        cancel()
+        // FIXME Jobがない場合にIllegalStateExceptionを吐いてしまうため、要修正
+        // cancel()
     }
 }

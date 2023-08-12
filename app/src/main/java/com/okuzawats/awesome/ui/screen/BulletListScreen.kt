@@ -25,9 +25,9 @@ import org.koin.compose.koinInject
  */
 @Composable
 fun BulletList(
-    modifier: Modifier = Modifier,
     presenter: BulletListPresenter = koinInject(),
     lifecycleOwner: LifecycleOwner = LocalLifecycleOwner.current,
+    onBulletClick: () -> Unit, // TODO 画面遷移処理の方法は要検討
 ) {
     when (val uiState = presenter.present()) {
         is BulletList -> {
@@ -47,7 +47,7 @@ fun BulletList(
                     )
                 }
                 LazyColumn(
-                    modifier = modifier
+                    modifier = Modifier
                         .fillMaxWidth(),
                 ) {
                     items(uiState.count) { i ->
@@ -57,6 +57,7 @@ fun BulletList(
                                 .height(56.dp),
                             bullet = uiState.bullets[i],
                             onBulletClick = {
+                                onBulletClick()
                                 uiState.eventSink(OnBulletClick)
                             },
                         )
