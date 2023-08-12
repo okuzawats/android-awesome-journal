@@ -58,11 +58,6 @@ dependencies {
     implementation 'androidx.compose.ui:ui-tooling-preview'
     implementation 'androidx.compose.material3:material3'
 
-    implementation 'com.slack.circuit:circuit-foundation:0.12.1'
-    implementation 'com.slack.circuit:circuit-runtime:0.12.1'
-    implementation 'com.slack.circuit:circuit-runtime-presenter:0.12.1'
-    implementation 'com.slack.circuit:circuit-runtime-ui:0.12.1'
-
     implementation "io.insert-koin:koin-android:3.4.3"
     implementation "io.insert-koin:koin-compose:1.0.4"
 
