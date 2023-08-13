@@ -17,49 +17,49 @@ import com.okuzawats.awesome.ui.screen.BulletList
 
 @Composable
 fun MainScreen() {
-    val navController = rememberNavController()
+  val navController = rememberNavController()
 
-    MaterialTheme {
-        Scaffold(
-            bottomBar = {
-                AwesomeBottomAppBar(
-                    modifier = Modifier.fillMaxWidth(),
-                    onFabClicked = {
-                        // TODO
-                    },
-                )
-            },
-        ) { padding ->
-            NavHost(
-                navController = navController,
-                startDestination = MainNavigation.BulletList.toString(),
-                modifier = Modifier.padding(padding),
-            ) {
-                composable(
-                    route = MainNavigation.BulletList.toString(),
-                ) {
-                    BulletList(
-                        onBulletClick = { bullet ->
-                            navController.navigate("${MainNavigation.BulletEdit}/${bullet.text}")
-                        }
-                    )
-                }
-                composable(
-                    route = "${MainNavigation.BulletEdit}/{bullet}",
-                    arguments = listOf(
-                        navArgument("bullet") {
-                            type = NavType.StringType
-                            nullable = false
-                        }
-                    ),
-                ) {
-                    val message = it.arguments?.getString("bullet")
-                        ?: throw IllegalArgumentException()
-                    BulletCreate(
-                        message = message,
-                    )
-                }
+  MaterialTheme {
+    Scaffold(
+      bottomBar = {
+        AwesomeBottomAppBar(
+          modifier = Modifier.fillMaxWidth(),
+          onFabClicked = {
+            // TODO
+          },
+        )
+      },
+    ) { padding ->
+      NavHost(
+        navController = navController,
+        startDestination = MainNavigation.BulletList.toString(),
+        modifier = Modifier.padding(padding),
+      ) {
+        composable(
+          route = MainNavigation.BulletList.toString(),
+        ) {
+          BulletList(
+            onBulletClick = { bullet ->
+              navController.navigate("${MainNavigation.BulletEdit}/${bullet.text}")
             }
+          )
         }
+        composable(
+          route = "${MainNavigation.BulletEdit}/{bullet}",
+          arguments = listOf(
+            navArgument("bullet") {
+              type = NavType.StringType
+              nullable = false
+            }
+          ),
+        ) {
+          val message = it.arguments?.getString("bullet")
+            ?: throw IllegalArgumentException()
+          BulletCreate(
+            message = message,
+          )
+        }
+      }
     }
+  }
 }

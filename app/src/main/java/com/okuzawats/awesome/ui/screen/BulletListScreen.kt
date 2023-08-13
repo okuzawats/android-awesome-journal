@@ -26,51 +26,51 @@ import org.koin.compose.koinInject
  */
 @Composable
 fun BulletList(
-    presenter: BulletListPresenter = koinInject(),
-    lifecycleOwner: LifecycleOwner = LocalLifecycleOwner.current,
-    onBulletClick: (Bullet) -> Unit, // TODO 画面遷移処理の方法は要検討
+  presenter: BulletListPresenter = koinInject(),
+  lifecycleOwner: LifecycleOwner = LocalLifecycleOwner.current,
+  onBulletClick: (Bullet) -> Unit, // TODO 画面遷移処理の方法は要検討
 ) {
-    when (val uiState = presenter.present()) {
-        is BulletList -> {
-            Column {
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(56.dp)
-                        .padding(16.dp),
-                ) {
-                    Text(
-                        // TODO formatterを適用する
-                        text = uiState.date.toString(),
-                        modifier = Modifier
-                            .align(Alignment.Center)
-                            .fillMaxWidth(),
-                    )
-                }
-                LazyColumn(
-                    modifier = Modifier
-                        .fillMaxWidth(),
-                ) {
-                    items(uiState.count) { i ->
-                        BulletListRow(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .height(56.dp),
-                            bullet = uiState.bullets[i],
-                            onBulletClick = {
-                                onBulletClick(it)
-                                uiState.eventSink(OnBulletClick)
-                            },
-                        )
-                    }
-                }
-            }
+  when (val uiState = presenter.present()) {
+    is BulletList -> {
+      Column {
+        Box(
+          modifier = Modifier
+            .fillMaxWidth()
+            .height(56.dp)
+            .padding(16.dp),
+        ) {
+          Text(
+            // TODO formatterを適用する
+            text = uiState.date.toString(),
+            modifier = Modifier
+              .align(Alignment.Center)
+              .fillMaxWidth(),
+          )
         }
+        LazyColumn(
+          modifier = Modifier
+            .fillMaxWidth(),
+        ) {
+          items(uiState.count) { i ->
+            BulletListRow(
+              modifier = Modifier
+                .fillMaxWidth()
+                .height(56.dp),
+              bullet = uiState.bullets[i],
+              onBulletClick = {
+                onBulletClick(it)
+                uiState.eventSink(OnBulletClick)
+              },
+            )
+          }
+        }
+      }
     }
+  }
 
-    DisposableEffect(lifecycleOwner) {
-        onDispose {
-            presenter.dispose()
-        }
+  DisposableEffect(lifecycleOwner) {
+    onDispose {
+      presenter.dispose()
     }
+  }
 }

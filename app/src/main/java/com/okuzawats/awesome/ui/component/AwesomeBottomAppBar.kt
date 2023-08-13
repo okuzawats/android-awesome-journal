@@ -22,34 +22,34 @@ import com.okuzawats.awesome.R
  */
 @Composable
 fun AwesomeBottomAppBar(
-    modifier: Modifier = Modifier,
-    onFabClicked: () -> Unit,
+  modifier: Modifier = Modifier,
+  onFabClicked: () -> Unit,
 ) {
-    // FIXME BottomAppBarの引数にActionとFABを渡すように修正する。
-    //  現在、上記のコードがビルドエラーとってしまうため、自力で配置する。
-    BottomAppBar {
-        Row(
-            modifier = modifier
-                .padding(top = 12.dp, end = 16.dp, bottom = 12.dp),
-        ) {
-            // FABをRowの末尾に配置するためのSpacer
-            Spacer(
-                modifier = Modifier
-                    .weight(1f)
-                    .fillMaxHeight(),
-            )
-            FloatingActionButton(
-                onClick = onFabClicked,
-            ) {
-                Icon(
-                    painter = painterResource(R.drawable.baseline_add_24),
-                    // TODO contentDescriptionの設定
-                    contentDescription = "add",
-                    modifier = Modifier
-                        .width(24.dp)
-                        .height(24.dp),
-                )
-            }
-        }
+  // FIXME BottomAppBarの引数にActionとFABを渡すように修正する。
+  //  現在、上記のコードがビルドエラーとってしまうため、自力で配置する。
+  BottomAppBar {
+    Row(
+      modifier = modifier
+        .padding(top = 12.dp, end = 16.dp, bottom = 12.dp),
+    ) {
+      // FABをRowの末尾に配置するためのSpacer
+      Spacer(
+        modifier = Modifier
+          .weight(1f)
+          .fillMaxHeight(),
+      )
+      FloatingActionButton(
+        onClick = onFabClicked,
+      ) {
+        Icon(
+          painter = painterResource(R.drawable.baseline_add_24),
+          // TODO contentDescriptionの設定
+          contentDescription = "add",
+          modifier = Modifier
+            .width(24.dp)
+            .height(24.dp),
+        )
+      }
     }
+  }
 }

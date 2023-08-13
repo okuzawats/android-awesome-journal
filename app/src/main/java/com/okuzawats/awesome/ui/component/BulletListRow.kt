@@ -32,62 +32,62 @@ import java.util.UUID
  */
 @Composable
 fun BulletListRow(
-    modifier: Modifier = Modifier,
-    bullet: Bullet,
-    onBulletClick: (Bullet) -> Unit,
+  modifier: Modifier = Modifier,
+  bullet: Bullet,
+  onBulletClick: (Bullet) -> Unit,
 ) {
-    Column {
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            modifier = modifier
-                .clickable(
-                    onClick = {
-                        onBulletClick(bullet)
-                    },
-                ),
-        ) {
-            Spacer(
-                modifier = Modifier
-                    .width(16.dp),
-            )
-            Image(
-                painter = painterResource(
-                    id = R.drawable.baseline_check_circle_outline_24,
-                ),
-                colorFilter = ColorFilter.tint(Color.Black),
-                contentDescription = "task not checked", // TODO
-                modifier = Modifier
-                    .width(24.dp)
-                    .height(24.dp),
-            )
-            Spacer(
-                modifier = Modifier
-                    .width(16.dp),
-            )
-            Text(
-                text = bullet.text,
-                modifier = Modifier
-                    .padding(all = 8.dp),
-            )
-            Spacer(
-                modifier = Modifier
-                    .width(24.dp),
-            )
-        }
-        Divider(
-            color = MaterialTheme.colorScheme.outlineVariant,
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(1.dp),
-        )
+  Column {
+    Row(
+      verticalAlignment = Alignment.CenterVertically,
+      modifier = modifier
+        .clickable(
+          onClick = {
+            onBulletClick(bullet)
+          },
+        ),
+    ) {
+      Spacer(
+        modifier = Modifier
+          .width(16.dp),
+      )
+      Image(
+        painter = painterResource(
+          id = R.drawable.baseline_check_circle_outline_24,
+        ),
+        colorFilter = ColorFilter.tint(Color.Black),
+        contentDescription = "task not checked", // TODO
+        modifier = Modifier
+          .width(24.dp)
+          .height(24.dp),
+      )
+      Spacer(
+        modifier = Modifier
+          .width(16.dp),
+      )
+      Text(
+        text = bullet.text,
+        modifier = Modifier
+          .padding(all = 8.dp),
+      )
+      Spacer(
+        modifier = Modifier
+          .width(24.dp),
+      )
     }
+    Divider(
+      color = MaterialTheme.colorScheme.outlineVariant,
+      modifier = Modifier
+        .fillMaxWidth()
+        .height(1.dp),
+    )
+  }
 }
 
 @Preview(showBackground = true, backgroundColor = 0xFFFFFFFF)
 @Composable
 fun BulletListRow_withText() {
-    BulletListRow(
-        bullet = Bullet(id = UUID.randomUUID(), text = "text", done = false),
-        onBulletClick = {},
-    )
+  BulletListRow(
+    bullet = Bullet(id = UUID.randomUUID(), text = "text", done = false),
+    onBulletClick = {},
+  )
 }

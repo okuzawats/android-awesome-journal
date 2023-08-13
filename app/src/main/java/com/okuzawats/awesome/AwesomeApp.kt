@@ -5,13 +5,13 @@ import com.okuzawats.awesome.module.bulletListModule
 import org.koin.core.context.startKoin
 
 class AwesomeApp : Application() {
-    override fun onCreate() {
-        super.onCreate()
+  override fun onCreate() {
+    super.onCreate()
 
-        startKoin {
-            modules(
-                bulletListModule,
-            )
-        }
+    startKoin {
+      modules(
+        bulletListModule,
+      )
     }
+  }
 }

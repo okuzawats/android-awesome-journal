@@ -8,9 +8,9 @@ import java.util.Date
  * Bulletの一覧表示
  */
 data class BulletList(
-    val date: Date,
-    val bullets: List<Bullet>,
-    val eventSink: (BulletListUiEvent) -> Unit,
+  val date: Date,
+  val bullets: List<Bullet>,
+  val eventSink: (BulletListUiEvent) -> Unit,
 ) : BulletListState {
-    val count: Int get() = bullets.size
+  val count: Int get() = bullets.size
 }

@@ -7,6 +7,6 @@ import org.koin.dsl.bind
 import org.koin.dsl.module
 
 val bulletListModule = module {
-    factory { BulletListPresenter(get()) }
-    single { DefaultBulletRepository() } bind BulletRepository::class
+  factory { BulletListPresenter(get()) }
+  single { DefaultBulletRepository() } bind BulletRepository::class
 }
