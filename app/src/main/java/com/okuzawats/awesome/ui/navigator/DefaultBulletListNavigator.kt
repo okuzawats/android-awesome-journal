@@ -15,7 +15,5 @@ class MainNavigator : BulletListNavigator {
   val toEdit: Flow<Bullet> get() = _toEdit
   private val _toEdit = MutableSharedFlow<Bullet>()
 
-  override suspend fun toEdit(bullet: Bullet) {
-    _toEdit.emit(bullet)
-  }
+  override suspend fun toEdit(bullet: Bullet) { _toEdit.emit(bullet) }
 }
