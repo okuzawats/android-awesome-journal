@@ -7,11 +7,6 @@ import org.koin.core.context.startKoin
 class AwesomeApp : Application() {
   override fun onCreate() {
     super.onCreate()
-
-    startKoin {
-      modules(
-        bulletListModule,
-      )
-    }
+    startKoin { modules(bulletListModule) }
   }
 }
