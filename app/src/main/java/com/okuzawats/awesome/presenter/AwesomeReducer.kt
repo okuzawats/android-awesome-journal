@@ -24,16 +24,12 @@ abstract class AwesomeReducer<S: UiState, E : UiEvent>(initialState: S) {
   /**
    * 状態を更新する
    */
-  fun setState(s: S) {
-    _state.tryEmit(s)
-  }
+  fun setState(s: S) { _state.tryEmit(s) }
 
   /**
    * イベントを発行する
    */
-  fun sendEvent(e: E) {
-    reduce(_state.value, e)
-  }
+  fun sendEvent(e: E) { reduce(_state.value, e) }
 
   /**
    * [oldState]の状態から新たな状態を作り出すための抽象関数
