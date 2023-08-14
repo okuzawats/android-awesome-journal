@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
  * @param bulletId 編集するBulletのID。新規作成の時はnull。
  */
 @Composable
-fun BulletCreate(
+fun BulletCreateOrEdit(
   bulletId: String?,
 ) {
   Column {
