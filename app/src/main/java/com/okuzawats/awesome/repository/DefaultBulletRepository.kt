@@ -13,7 +13,7 @@ class DefaultBulletRepository : BulletRepository {
     return (0 ..< 100).map {
       val text = (0 ..< 30).map { charset.random() }.joinToString("")
       Bullet(
-        id = UUID.randomUUID().toString(),
+        id = "${UUID.randomUUID()}",
         text = text,
         done = false,
       )
