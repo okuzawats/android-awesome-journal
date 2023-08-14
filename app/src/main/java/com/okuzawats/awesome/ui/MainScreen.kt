@@ -39,9 +39,9 @@ fun MainScreen() {
           route = MainNavigation.BulletList.toString(),
         ) {
           BulletList(
-            onBulletClick = { bullet ->
-              navController.navigate("${MainNavigation.BulletEdit}/${bullet.text}")
-            }
+//            onBulletClick = { bullet ->
+//              navController.navigate("${MainNavigation.BulletEdit}/${bullet.text}")
+//            }
           )
         }
         composable(

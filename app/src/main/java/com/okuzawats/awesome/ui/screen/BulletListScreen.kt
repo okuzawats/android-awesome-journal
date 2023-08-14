@@ -14,9 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.LifecycleOwner
-import com.okuzawats.awesome.domain.bullet.Bullet
 import com.okuzawats.awesome.presenter.bulletlist.BulletListPresenter
-import com.okuzawats.awesome.presenter.bulletlist.event.OnBulletClick
 import com.okuzawats.awesome.presenter.bulletlist.state.BulletList
 import com.okuzawats.awesome.presenter.bulletlist.state.BulletListInitial
 import com.okuzawats.awesome.ui.component.BulletListRow
@@ -29,7 +27,6 @@ import org.koin.compose.koinInject
 fun BulletList(
   presenter: BulletListPresenter = koinInject(),
   lifecycleOwner: LifecycleOwner = LocalLifecycleOwner.current,
-  onBulletClick: (Bullet) -> Unit, // TODO 画面遷移処理の方法は要検討
 ) {
   when (val uiState = presenter.present()) {
     is BulletListInitial -> {
@@ -62,8 +59,7 @@ fun BulletList(
                 .height(56.dp),
               bullet = uiState.bullets[i],
               onBulletClick = {
-                // onBulletClick(it)
-                uiState.eventSink(OnBulletClick)
+                presenter.onBulletClick(it)
               },
             )
           }

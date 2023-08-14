@@ -2,20 +2,15 @@ package com.okuzawats.awesome.presenter.bulletlist
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.collectAsState
 import com.okuzawats.awesome.domain.bullet.Bullet
 import com.okuzawats.awesome.domain.bullet.BulletRepository
 import com.okuzawats.awesome.presenter.AwesomePresenter
+import com.okuzawats.awesome.presenter.bulletlist.event.OnBulletClick
 import com.okuzawats.awesome.presenter.bulletlist.event.OnBulletLoaded
 import com.okuzawats.awesome.presenter.bulletlist.reducer.BulletListReducer
 import com.okuzawats.awesome.presenter.bulletlist.state.BulletList
-import com.okuzawats.awesome.presenter.bulletlist.state.BulletListInitial
 import com.okuzawats.awesome.presenter.bulletlist.state.BulletListState
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
 import java.util.Date
 
 /**
@@ -27,46 +22,25 @@ class BulletListPresenter(
 ) : AwesomePresenter<BulletListState>() {
   @Composable
   override fun present(): BulletListState {
-    var date: Date by remember { mutableStateOf(Date()) }
-    var bullets: List<Bullet> by remember { mutableStateOf(emptyList()) }
-
     LaunchedEffect(Unit) {
       reducer.sendEvent(
         OnBulletLoaded(
-          bulletRepository.getBullets(),
-        ),
+          BulletList(
+            date = Date(),
+            bullets = bulletRepository.getBullets(),
+            eventSink = {
+              // TODO
+              println("===== onEventSink")
+            }
+          )
+        )
       )
     }
-    
-    // TODO collectとstateの更新を行う処理を親クラスでできないか検討する。
-    launch {
-      reducer
-        .state
-        .collect {
-          when (it) {
-            is BulletListInitial -> {
-              // TODO
-            }
-            is BulletList -> {
-              date = it.date
-              bullets = it.bullets
-            }
-          }
-        }
-    }
 
-    return BulletList(
-      date = date,
-      bullets = bullets,
-    ) {
-      // TODO View-Presenter | Presenter-Reducerのイベントを分ける。
-      launch {
-        reducer.sendEvent(
-          OnBulletLoaded(
-            bulletRepository.getBullets(),
-          ),
-        )
-      }
-    }
+    return reducer.state.collectAsState().value
+  }
+
+  fun onBulletClick(bullet: Bullet) {
+    reducer.sendEvent(OnBulletClick)
   }
 }

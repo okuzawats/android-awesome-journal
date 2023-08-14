@@ -33,8 +33,8 @@ class BulletListReducer : AwesomeReducer<BulletListState, BulletListUiEvent>(
         setState(
           BulletList(
             date = newDate,
-            bullets = event.bullets,
-            eventSink = if (oldState is BulletList) oldState.eventSink else { b -> },
+            bullets = event.bulletList.bullets,
+            eventSink = event.bulletList.eventSink,
           )
         )
       }
