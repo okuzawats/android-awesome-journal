@@ -16,8 +16,10 @@ import com.okuzawats.awesome.ui.component.AwesomeBottomAppBar
 import com.okuzawats.awesome.ui.component.BulletCreate
 import com.okuzawats.awesome.ui.navigator.MainNavigator
 import com.okuzawats.awesome.ui.screen.BulletList
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
 import org.koin.compose.koinInject
 
 @Composable
@@ -27,9 +29,9 @@ fun MainScreen(
   val navController = rememberNavController()
 
   LaunchedEffect(Unit) {
-    navigator.toEdit.onEach {
-      navController.navigate("${MainNavigation.BulletEdit}/${it.id}")
-    }.launchIn(this)
+    navigator.toEdit
+      .onEach { navController.navigate(route = "${MainNavigation.BulletEdit}/${it.id}") }
+      .launchIn(this)
   }
 
   MaterialTheme {
@@ -38,7 +40,8 @@ fun MainScreen(
         AwesomeBottomAppBar(
           modifier = Modifier.fillMaxWidth(),
           onFabClicked = {
-            // TODO
+            // TODO MainScreen用のPresenterを作成する。
+            navController.navigate("${MainNavigation.BulletEdit}/${null}")
           },
         )
       },
@@ -58,12 +61,12 @@ fun MainScreen(
           arguments = listOf(
             navArgument("bullet_id") {
               type = NavType.StringType
-              nullable = false
+              nullable = true
             }
           ),
         ) {
           BulletCreate(
-            bulletId = it.requireStringArgument("bullet_id"),
+            bulletId = it.requireArgument().getString("bullet_id", null),
           )
         }
       }

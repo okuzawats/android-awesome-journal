@@ -5,13 +5,19 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 
 /**
- * Bullet作成画面
+ * Bullet作成・編集画面
+ *
+ * @param bulletId 編集するBulletのID。新規作成の時はnull。
  */
 @Composable
 fun BulletCreate(
-  bulletId: String,
+  bulletId: String?,
 ) {
   Column {
-    Text(bulletId)
+    if (bulletId != null) {
+      Text(bulletId)
+    } else {
+      Text("新規作成")
+    }
   }
 }
