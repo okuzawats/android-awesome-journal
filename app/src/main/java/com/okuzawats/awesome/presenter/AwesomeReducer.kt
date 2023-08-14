@@ -1,6 +1,5 @@
 package com.okuzawats.awesome.presenter
 
-import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
@@ -18,8 +17,6 @@ abstract class AwesomeReducer<S: UiState, E : UiEvent>(initialState: S) {
    * UIの状態
    */
   val state: StateFlow<S> get() = _state
-
-  private val _event: MutableSharedFlow<E> = MutableSharedFlow()
 
   /**
    * 状態を更新する
