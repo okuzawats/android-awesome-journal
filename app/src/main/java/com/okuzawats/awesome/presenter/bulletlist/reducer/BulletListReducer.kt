@@ -2,7 +2,6 @@ package com.okuzawats.awesome.presenter.bulletlist.reducer
 
 import com.okuzawats.awesome.presenter.AwesomeReducer
 import com.okuzawats.awesome.presenter.bulletlist.event.BulletListUiEvent
-import com.okuzawats.awesome.presenter.bulletlist.event.OnBulletClick
 import com.okuzawats.awesome.presenter.bulletlist.event.OnBulletLoaded
 import com.okuzawats.awesome.presenter.bulletlist.state.BulletList
 import com.okuzawats.awesome.presenter.bulletlist.state.BulletListInitial
@@ -21,10 +20,8 @@ class BulletListReducer : AwesomeReducer<BulletListState, BulletListUiEvent>(
     event: BulletListUiEvent,
   ) {
     when (event) {
-      is OnBulletClick -> {
-
-      }
       is OnBulletLoaded -> {
+        // TODO UiEventからデータを受け取るように修正
         val calendar = Calendar.getInstance()
         calendar.time = if (oldState is BulletList) oldState.date else Date()
         calendar.add(Calendar.DATE, 1)
@@ -34,18 +31,8 @@ class BulletListReducer : AwesomeReducer<BulletListState, BulletListUiEvent>(
           BulletList(
             date = newDate,
             bullets = event.bulletList.bullets,
-            eventSink = event.bulletList.eventSink,
           )
         )
-      }
-    }
-
-    when (oldState) {
-      is BulletListInitial -> {
-        // TODO
-      }
-
-      is BulletList -> {
       }
     }
   }

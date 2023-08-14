@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -13,11 +14,23 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.okuzawats.awesome.ui.component.AwesomeBottomAppBar
 import com.okuzawats.awesome.ui.component.BulletCreate
+import com.okuzawats.awesome.ui.navigator.MainNavigator
 import com.okuzawats.awesome.ui.screen.BulletList
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
+import org.koin.compose.koinInject
 
 @Composable
-fun MainScreen() {
+fun MainScreen(
+  navigator: MainNavigator = koinInject(),
+) {
   val navController = rememberNavController()
+
+  LaunchedEffect(Unit) {
+    navigator.toEdit.onEach {
+      navController.navigate("${MainNavigation.BulletEdit}/${it}")
+    }.launchIn(this)
+  }
 
   MaterialTheme {
     Scaffold(
