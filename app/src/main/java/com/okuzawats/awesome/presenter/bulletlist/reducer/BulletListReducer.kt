@@ -15,10 +15,7 @@ import java.util.Date
 class BulletListReducer : AwesomeReducer<BulletListState, BulletListUiEvent>(
   initialState = BulletListInitial,
 ) {
-  override fun reduce(
-    oldState: BulletListState,
-    event: BulletListUiEvent,
-  ) {
+  override fun reduce(oldState: BulletListState, event: BulletListUiEvent) {
     when (event) {
       is OnBulletLoaded -> {
         // TODO UiEventからデータを受け取るように修正
