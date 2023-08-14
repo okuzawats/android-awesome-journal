@@ -13,13 +13,11 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.okuzawats.awesome.ui.component.AwesomeBottomAppBar
-import com.okuzawats.awesome.ui.component.BulletCreate
+import com.okuzawats.awesome.ui.component.BulletCreateOrEdit
 import com.okuzawats.awesome.ui.navigator.MainNavigator
 import com.okuzawats.awesome.ui.screen.BulletList
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.launch
 import org.koin.compose.koinInject
 
 @Composable
@@ -51,11 +49,13 @@ fun MainScreen(
         startDestination = MainNavigation.BulletList.toString(),
         modifier = Modifier.padding(padding),
       ) {
+        /* Bullet一覧画面 */
         composable(
           route = MainNavigation.BulletList.toString(),
         ) {
           BulletList()
         }
+        /* Bullet新規作成・編集画面 */
         composable(
           route = "${MainNavigation.BulletEdit}/{bullet_id}",
           arguments = listOf(
@@ -65,7 +65,7 @@ fun MainScreen(
             }
           ),
         ) {
-          BulletCreate(
+          BulletCreateOrEdit(
             bulletId = it.requireArgument().getString("bullet_id", null),
           )
         }
