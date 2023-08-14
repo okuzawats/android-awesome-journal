@@ -24,12 +24,8 @@ abstract class AwesomePresenter<T : UiState> {
   /**
    * CoroutineScopeをlaunchする。
    */
-  fun launch(
-    block: suspend CoroutineScope.() -> Unit,
-  ) {
-    _job = presenterScope.launch {
-      block()
-    }
+  fun launch(block: suspend CoroutineScope.() -> Unit) {
+    _job = presenterScope.launch { block() }
   }
 
   /**
