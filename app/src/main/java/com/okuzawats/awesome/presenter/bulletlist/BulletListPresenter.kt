@@ -12,8 +12,6 @@ import com.okuzawats.awesome.presenter.AwesomePresenter
 import com.okuzawats.awesome.presenter.bulletlist.reducer.BulletListReducer
 import com.okuzawats.awesome.presenter.bulletlist.state.BulletList
 import com.okuzawats.awesome.presenter.bulletlist.state.BulletListState
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch
 import java.util.Date
 
 /**
@@ -22,10 +20,11 @@ import java.util.Date
 class BulletListPresenter(
   private val bulletRepository: BulletRepository,
   private val reducer: BulletListReducer,
-) : AwesomePresenter<BulletListState>, CoroutineScope {
+) : AwesomePresenter<BulletListState>() {
+
   @Composable
   override fun present(): BulletListState {
-    var date: Date by remember { mutableStateOf(Date()) }
+    val date: Date by remember { mutableStateOf(Date()) }
     var bullets: List<Bullet> by remember { mutableStateOf(emptyList()) }
 
     LaunchedEffect(Unit) {
@@ -36,12 +35,11 @@ class BulletListPresenter(
       date = date,
       bullets = bullets,
     ) {
+      // TODO 不要な処理なので削除する
+      launch {
+        bulletRepository.getBullets()
+      }
       reducer.sendEvent(it)
     }
-  }
-
-  override fun dispose() {
-    // FIXME Jobがない場合にIllegalStateExceptionを吐いてしまうため、要修正
-    // cancel()
   }
 }

@@ -1,30 +1,49 @@
 package com.okuzawats.awesome.presenter
 
+import androidx.annotation.CallSuper
 import androidx.compose.runtime.Composable
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
 /**
- * Coroutinesを呼び出し可能な[com.slack.circuit.runtime.presenter.Presenter]
+ * Coroutinesを呼び出し可能なPresenter
  */
-interface AwesomePresenter<T : UiState> : CoroutineScope {
+abstract class AwesomePresenter<T : UiState> {
+
+  class PresenterScope : CoroutineScope {
+    override val coroutineContext: CoroutineContext get() = Dispatchers.IO
+  }
+
+  private val presenterScope: PresenterScope = PresenterScope()
+
+  private var _job: Job? = null
+
   /**
-   * CoroutinesのContext
-   *
-   * Dispatchers.IOでCoroutinesを実行する。
+   * CoroutineScopeをlaunchする。
    */
-  override val coroutineContext: CoroutineContext
-    get() = Dispatchers.IO
+  fun launch(
+    block: suspend CoroutineScope.() -> Unit,
+  ) {
+    _job = presenterScope.launch {
+      block()
+    }
+  }
+
+  /**
+   * Presenterの破棄時に呼び出すべき処理を実装する。
+   */
+  @CallSuper
+  open fun dispose() {
+    _job?.cancel()
+    _job = null
+  }
 
   /**
    * UiStateを返すComposable関数
    */
   @Composable
-  fun present(): UiState
-
-  /**
-   * Presenterの破棄時に呼び出すべき処理を実装する。
-   */
-  fun dispose()
+  abstract fun present(): UiState
 }
