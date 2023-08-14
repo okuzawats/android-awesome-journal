@@ -9,9 +9,9 @@ import androidx.compose.runtime.Composable
  */
 @Composable
 fun BulletCreate(
-  message: String,
+  bulletId: String,
 ) {
   Column {
-    Text(message)
+    Text(bulletId)
   }
 }

@@ -1,5 +1,6 @@
 package com.okuzawats.awesome.ui
 
+import android.os.Bundle
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
@@ -7,6 +8,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -28,7 +30,7 @@ fun MainScreen(
 
   LaunchedEffect(Unit) {
     navigator.toEdit.onEach {
-      navController.navigate("${MainNavigation.BulletEdit}/${it}")
+      navController.navigate("${MainNavigation.BulletEdit}/${it.id}")
     }.launchIn(this)
   }
 
@@ -51,28 +53,28 @@ fun MainScreen(
         composable(
           route = MainNavigation.BulletList.toString(),
         ) {
-          BulletList(
-//            onBulletClick = { bullet ->
-//              navController.navigate("${MainNavigation.BulletEdit}/${bullet.text}")
-//            }
-          )
+          BulletList()
         }
         composable(
-          route = "${MainNavigation.BulletEdit}/{bullet}",
+          route = "${MainNavigation.BulletEdit}/{bullet_id}",
           arguments = listOf(
-            navArgument("bullet") {
+            navArgument("bullet_id") {
               type = NavType.StringType
               nullable = false
             }
           ),
         ) {
-          val message = it.arguments?.getString("bullet")
-            ?: throw IllegalArgumentException()
           BulletCreate(
-            message = message,
+            bulletId = it.requireStringArgument("bullet_id"),
           )
         }
       }
     }
   }
 }
+
+fun NavBackStackEntry.requireArgument(): Bundle = requireNotNull(arguments)
+
+fun NavBackStackEntry.requireStringArgument(key: String) = requireArgument().requireString(key)
+
+fun Bundle.requireString(key: String): String = requireNotNull(getString(key))

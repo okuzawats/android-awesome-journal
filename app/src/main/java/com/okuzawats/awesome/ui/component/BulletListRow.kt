@@ -87,7 +87,7 @@ fun BulletListRow(
 @Composable
 fun BulletListRow_withText() {
   BulletListRow(
-    bullet = Bullet(id = UUID.randomUUID(), text = "text", done = false),
+    bullet = Bullet(id = "random-uuid-123456", text = "text", done = false),
     onBulletClick = {},
   )
 }
