@@ -62,7 +62,7 @@ fun BulletList(
                 .height(56.dp),
               bullet = uiState.bullets[i],
               onBulletClick = {
-                onBulletClick(it)
+                // onBulletClick(it)
                 uiState.eventSink(OnBulletClick)
               },
             )
