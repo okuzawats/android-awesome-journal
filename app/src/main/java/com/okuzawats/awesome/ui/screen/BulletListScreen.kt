@@ -18,6 +18,7 @@ import com.okuzawats.awesome.domain.bullet.Bullet
 import com.okuzawats.awesome.presenter.bulletlist.BulletListPresenter
 import com.okuzawats.awesome.presenter.bulletlist.event.OnBulletClick
 import com.okuzawats.awesome.presenter.bulletlist.state.BulletList
+import com.okuzawats.awesome.presenter.bulletlist.state.BulletListInitial
 import com.okuzawats.awesome.ui.component.BulletListRow
 import org.koin.compose.koinInject
 
@@ -31,6 +32,9 @@ fun BulletList(
   onBulletClick: (Bullet) -> Unit, // TODO 画面遷移処理の方法は要検討
 ) {
   when (val uiState = presenter.present()) {
+    is BulletListInitial -> {
+      // TODO
+    }
     is BulletList -> {
       Column {
         Box(

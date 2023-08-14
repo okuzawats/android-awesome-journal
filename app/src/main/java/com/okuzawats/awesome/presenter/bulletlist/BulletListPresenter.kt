@@ -9,6 +9,7 @@ import androidx.compose.runtime.setValue
 import com.okuzawats.awesome.domain.bullet.Bullet
 import com.okuzawats.awesome.domain.bullet.BulletRepository
 import com.okuzawats.awesome.presenter.AwesomePresenter
+import com.okuzawats.awesome.presenter.bulletlist.reducer.BulletListReducer
 import com.okuzawats.awesome.presenter.bulletlist.state.BulletList
 import com.okuzawats.awesome.presenter.bulletlist.state.BulletListState
 import kotlinx.coroutines.CoroutineScope
@@ -20,6 +21,7 @@ import java.util.Date
  */
 class BulletListPresenter(
   private val bulletRepository: BulletRepository,
+  private val reducer: BulletListReducer,
 ) : AwesomePresenter<BulletListState>, CoroutineScope {
   @Composable
   override fun present(): BulletListState {
@@ -34,9 +36,7 @@ class BulletListPresenter(
       date = date,
       bullets = bullets,
     ) {
-      launch {
-        bullets = bulletRepository.getBullets()
-      }
+      reducer.sendEvent(it)
     }
   }
 
