@@ -1,6 +1,5 @@
 package com.okuzawats.awesome.ui
 
-import android.os.Bundle
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
@@ -8,7 +7,6 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -72,9 +70,3 @@ fun MainScreen(
     }
   }
 }
-
-fun NavBackStackEntry.requireArgument(): Bundle = requireNotNull(arguments)
-
-fun NavBackStackEntry.requireStringArgument(key: String) = requireArgument().requireString(key)
-
-fun Bundle.requireString(key: String): String = requireNotNull(getString(key))
