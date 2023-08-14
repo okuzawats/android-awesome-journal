@@ -34,8 +34,7 @@ fun BulletList(
     }
     is BulletList -> {
       Column {
-        Box(
-          modifier = Modifier
+        Box(modifier = Modifier
             .fillMaxWidth()
             .height(56.dp)
             .padding(16.dp),
@@ -48,19 +47,14 @@ fun BulletList(
               .fillMaxWidth(),
           )
         }
-        LazyColumn(
-          modifier = Modifier
-            .fillMaxWidth(),
-        ) {
+        LazyColumn(modifier = Modifier.fillMaxWidth()) {
           items(uiState.count) { i ->
             BulletListRow(
               modifier = Modifier
                 .fillMaxWidth()
                 .height(56.dp),
               bullet = uiState.bullets[i],
-              onBulletClick = {
-                presenter.onBulletClick(it)
-              },
+              onBulletClick = { presenter.onBulletClick(it) },
             )
           }
         }
@@ -69,8 +63,6 @@ fun BulletList(
   }
 
   DisposableEffect(lifecycleOwner) {
-    onDispose {
-      presenter.dispose()
-    }
+    onDispose { presenter.dispose() }
   }
 }
