@@ -42,8 +42,6 @@ class BulletListPresenter(
    * Bulletをクリックした時
    */
   fun onBulletClick(bullet: Bullet) {
-    launch {
-      navigator.toEdit(bullet = bullet)
-    }
+    launch { navigator.toEdit(bullet = bullet) }
   }
 }
