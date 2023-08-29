@@ -35,7 +35,7 @@ fun BulletCreateOrEdit(
 
   Column {
     TopAppBar(
-      title = {d
+      title = {
         // bulletIdがnon-nullなら編集モード、nullなら新規作成モード
         Text(
           stringResource(
