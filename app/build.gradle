@@ -1,6 +1,7 @@
 plugins {
   id "com.android.application"
   id "org.jetbrains.kotlin.android"
+  id "org.jetbrains.kotlin.kapt"
 }
 
 android {
@@ -62,6 +63,10 @@ dependencies {
 
   implementation "io.insert-koin:koin-android:3.4.3"
   implementation "io.insert-koin:koin-compose:1.0.4"
+
+  // TODO kspを使うようにする
+  implementation "androidx.room:room-runtime:2.5.2"
+  kapt "androidx.room:room-compiler:2.5.2"
 
   testImplementation "junit:junit:4.13.2"
   debugImplementation "androidx.compose.ui:ui-tooling"
