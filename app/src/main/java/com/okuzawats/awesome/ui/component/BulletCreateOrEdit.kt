@@ -43,6 +43,21 @@ fun BulletCreateOrEdit(
           ),
         )
       },
+      navigationIcon = {
+        IconButton(
+          onClick = {
+            // TODO
+            println("Pop!")
+          }
+        ) {
+          Image(
+            painter = painterResource(id = R.drawable.baseline_arrow_back_24),
+            colorFilter = ColorFilter.tint(Color.Black),
+            contentDescription = "pop back", // TODO
+            modifier = Modifier.padding(8.dp),
+          )
+        }
+      },
       actions = {
         IconButton(
           onClick = {
