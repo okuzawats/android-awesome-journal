@@ -38,9 +38,6 @@ class BulletListPresenter(
     return reducer.state.collectAsState().value
   }
 
-  /**
-   * Bulletをクリックした時
-   */
   fun onBulletClicked(bullet: Bullet) {
     launch { navigator.toEdit(bullet = bullet) }
   }
