@@ -54,7 +54,7 @@ fun BulletListScreen(
                 .fillMaxWidth()
                 .height(56.dp),
               bullet = uiState.bullets[i],
-              onBulletClick = { presenter.onBulletClick(it) },
+              onBulletClick = { presenter.onBulletClicked(it) },
             )
           }
         }
