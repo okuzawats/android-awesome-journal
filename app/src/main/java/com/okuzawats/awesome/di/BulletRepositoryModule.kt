@@ -2,16 +2,16 @@ package com.okuzawats.awesome.di
 
 import com.okuzawats.awesome.domain.bullet.BulletRepository
 import com.okuzawats.awesome.repository.DefaultBulletRepository
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-class BulletRepositoryModule {
-  @Provides
+abstract class BulletRepositoryModule {
+  @Binds
   @Singleton
-  fun provideBulletRepository(impl: DefaultBulletRepository): BulletRepository = impl
+  abstract fun bindBulletRepository(impl: DefaultBulletRepository): BulletRepository
 }
