@@ -1,6 +1,6 @@
 package com.okuzawats.awesome.presenter.bulletlist.state
 
-import com.okuzawats.awesome.presenter.UiState
+import com.okuzawats.awesome.presenter.architecture.UiState
 
 /**
  * Bullet一覧画面のUiState

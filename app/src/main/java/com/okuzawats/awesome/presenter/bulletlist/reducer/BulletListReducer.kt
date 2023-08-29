@@ -1,6 +1,6 @@
 package com.okuzawats.awesome.presenter.bulletlist.reducer
 
-import com.okuzawats.awesome.presenter.AwesomeReducer
+import com.okuzawats.awesome.presenter.architecture.AwesomeReducer
 import com.okuzawats.awesome.presenter.bulletlist.event.BulletListUiEvent
 import com.okuzawats.awesome.presenter.bulletlist.event.OnBulletLoaded
 import com.okuzawats.awesome.presenter.bulletlist.state.BulletList

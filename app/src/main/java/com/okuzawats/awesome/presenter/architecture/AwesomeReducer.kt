@@ -1,4 +1,4 @@
-package com.okuzawats.awesome.presenter
+package com.okuzawats.awesome.presenter.architecture
 
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

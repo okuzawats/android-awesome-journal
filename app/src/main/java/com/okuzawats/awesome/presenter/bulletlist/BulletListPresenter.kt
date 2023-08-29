@@ -5,7 +5,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import com.okuzawats.awesome.domain.bullet.Bullet
 import com.okuzawats.awesome.domain.bullet.BulletRepository
-import com.okuzawats.awesome.presenter.AwesomePresenter
+import com.okuzawats.awesome.presenter.architecture.AwesomePresenter
 import com.okuzawats.awesome.presenter.bulletlist.event.OnBulletLoaded
 import com.okuzawats.awesome.presenter.bulletlist.navigator.BulletListNavigator
 import com.okuzawats.awesome.presenter.bulletlist.reducer.BulletListReducer

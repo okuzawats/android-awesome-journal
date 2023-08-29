@@ -1,4 +1,4 @@
-package com.okuzawats.awesome.presenter
+package com.okuzawats.awesome.presenter.architecture
 
 import androidx.annotation.CallSuper
 import androidx.compose.runtime.Composable
