@@ -80,9 +80,13 @@ fun MainScreen(
         ) {
           BulletCreateOrEdit(
             bulletId = it.requireArgument().getString("bullet_id", null),
-          ) {
-            isBottomAppBarVisible = true
-          }
+            onBackTapped = {
+              navController.popBackStack()
+            },
+            onDisposed = {
+              isBottomAppBarVisible = true
+            },
+          )
         }
       }
     }

@@ -27,6 +27,7 @@ import com.okuzawats.awesome.R
 @Composable
 fun BulletCreateOrEdit(
   bulletId: String?,
+  onBackTapped: () -> Unit,
   onDisposed: () -> Unit,
 ) {
   DisposableEffect(Unit) {
@@ -44,12 +45,7 @@ fun BulletCreateOrEdit(
         )
       },
       navigationIcon = {
-        IconButton(
-          onClick = {
-            // TODO
-            println("Pop!")
-          }
-        ) {
+        IconButton(onClick = { onBackTapped() }) {
           Image(
             painter = painterResource(id = R.drawable.baseline_arrow_back_24),
             colorFilter = ColorFilter.tint(Color.Black),
