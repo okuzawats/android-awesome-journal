@@ -20,7 +20,10 @@ class BulletEditPresenter(
     return BulletEditText(text = text)
   }
 
+  fun onBackClicked() = launch { navigator.popEdit() }
+
   fun onSaveClicked() {
+    // TODO
     println("on save clicked!")
   }
 }

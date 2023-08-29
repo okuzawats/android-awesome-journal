@@ -30,7 +30,6 @@ import org.koin.compose.koinInject
 fun BulletEditScreen(
   presenter: BulletEditPresenter = koinInject(),
   bulletId: String?,
-  onBackTapped: () -> Unit,
   onDisposed: () -> Unit,
 ) {
   DisposableEffect(Unit) {
@@ -48,7 +47,7 @@ fun BulletEditScreen(
         )
       },
       navigationIcon = {
-        IconButton(onClick = { onBackTapped() }) {
+        IconButton(onClick = { presenter.onBackClicked() }) {
           Image(
             painter = painterResource(id = R.drawable.baseline_arrow_back_24),
             colorFilter = ColorFilter.tint(Color.Black),

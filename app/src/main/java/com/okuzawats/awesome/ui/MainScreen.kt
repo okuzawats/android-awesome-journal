@@ -40,6 +40,12 @@ fun MainScreen(
         navController.navigate(route = "${MainNavigation.BulletEdit}/${it.id}")
       }
       .launchIn(this)
+
+    navigator.pop
+      .onEach {
+        navController.popBackStack()
+      }
+      .launchIn(this)
   }
 
   MaterialTheme {
@@ -80,9 +86,6 @@ fun MainScreen(
         ) {
           BulletEditScreen(
             bulletId = it.requireArgument().getString("bullet_id", null),
-            onBackTapped = {
-              navController.popBackStack()
-            },
             onDisposed = {
               isBottomAppBarVisible = true
             },
