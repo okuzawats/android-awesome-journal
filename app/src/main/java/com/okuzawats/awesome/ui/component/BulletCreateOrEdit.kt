@@ -35,16 +35,18 @@ fun BulletCreateOrEdit(
 
   Column {
     TopAppBar(
-      title = {
-        if (bulletId != null) {
-          Text(bulletId)
-        } else {
-          Text(stringResource(id = R.string.create_new))
-        }
+      title = {d
+        // bulletIdがnon-nullなら編集モード、nullなら新規作成モード
+        Text(
+          stringResource(
+            id = if (bulletId != null) R.string.edit_bullet else R.string.create_bullet,
+          ),
+        )
       },
       actions = {
         IconButton(
           onClick = {
+            // TODO
             println("Clicked!")
           }
         ) {
