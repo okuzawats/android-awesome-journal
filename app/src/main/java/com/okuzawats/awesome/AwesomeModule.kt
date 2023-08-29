@@ -1,4 +1,4 @@
-package com.okuzawats.awesome.module
+package com.okuzawats.awesome
 
 import com.okuzawats.awesome.domain.bullet.BulletRepository
 import com.okuzawats.awesome.presenter.bulletedit.BulletEditPresenter
