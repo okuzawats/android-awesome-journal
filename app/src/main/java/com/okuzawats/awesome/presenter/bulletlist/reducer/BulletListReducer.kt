@@ -8,11 +8,12 @@ import com.okuzawats.awesome.presenter.bulletlist.state.BulletListInitial
 import com.okuzawats.awesome.presenter.bulletlist.state.BulletListState
 import java.util.Calendar
 import java.util.Date
+import javax.inject.Inject
 
 /**
  * Bullet一覧画面の状態を更新するためのReducer
  */
-class BulletListReducer : AwesomeReducer<BulletListState, BulletListUiEvent>(
+class BulletListReducer @Inject constructor() : AwesomeReducer<BulletListState, BulletListUiEvent>(
   initialState = BulletListInitial,
 ) {
   override fun reduce(oldState: BulletListState, event: BulletListUiEvent) {

@@ -5,11 +5,14 @@ import com.okuzawats.awesome.presenter.bulletedit.navigator.BulletEditNavigator
 import com.okuzawats.awesome.presenter.bulletlist.navigator.BulletListNavigator
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
+import javax.inject.Inject
+import javax.inject.Singleton
 
 /**
  * 全体の画面遷移の実装クラス
  */
-class MainNavigator : BulletEditNavigator, BulletListNavigator {
+@Singleton
+class MainNavigator @Inject constructor() : BulletEditNavigator, BulletListNavigator {
   /**
    * 編集画面への画面遷移イベント
    */

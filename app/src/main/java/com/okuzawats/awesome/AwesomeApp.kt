@@ -1,11 +1,7 @@
 package com.okuzawats.awesome
 
 import android.app.Application
-import org.koin.core.context.startKoin
+import dagger.hilt.android.HiltAndroidApp
 
-class AwesomeApp : Application() {
-  override fun onCreate() {
-    super.onCreate()
-    startKoin { modules(awesomeModule) }
-  }
-}
+@HiltAndroidApp
+class AwesomeApp : Application()

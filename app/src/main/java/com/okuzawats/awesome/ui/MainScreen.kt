@@ -11,6 +11,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -18,15 +19,13 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.okuzawats.awesome.ui.component.AwesomeBottomAppBar
 import com.okuzawats.awesome.ui.screen.BulletEditScreen
-import com.okuzawats.awesome.ui.navigator.MainNavigator
 import com.okuzawats.awesome.ui.screen.BulletListScreen
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import org.koin.compose.koinInject
 
 @Composable
 fun MainScreen(
-  navigator: MainNavigator = koinInject(),
+  viewModel: MainViewModel = hiltViewModel(),
 ) {
   val navController = rememberNavController()
 
@@ -34,14 +33,14 @@ fun MainScreen(
   var isBottomAppBarVisible: Boolean by remember { mutableStateOf(true) }
 
   LaunchedEffect(Unit) {
-    navigator.toEdit
+    viewModel.navigator.toEdit
       .onEach {
         isBottomAppBarVisible = false
         navController.navigate(route = "${MainNavigation.BulletEdit}/${it.id}")
       }
       .launchIn(this)
 
-    navigator.pop
+    viewModel.navigator.pop
       .onEach {
         navController.popBackStack()
       }

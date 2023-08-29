@@ -8,36 +8,32 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.LifecycleOwner
-import com.okuzawats.awesome.presenter.bulletlist.BulletListPresenter
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.okuzawats.awesome.presenter.bulletlist.BulletListViewModel
 import com.okuzawats.awesome.presenter.bulletlist.state.BulletList
 import com.okuzawats.awesome.presenter.bulletlist.state.BulletListInitial
 import com.okuzawats.awesome.ui.component.BulletListRow
-import org.koin.compose.koinInject
 
 /**
  * Bulletを一覧表示するComposable
  */
 @Composable
 fun BulletListScreen(
-  presenter: BulletListPresenter = koinInject(),
-  lifecycleOwner: LifecycleOwner = LocalLifecycleOwner.current,
+  viewModel: BulletListViewModel = hiltViewModel(),
 ) {
-  when (val uiState = presenter.present()) {
+  when (val uiState = viewModel.present()) {
     is BulletListInitial -> {
       // TODO
     }
     is BulletList -> {
       Column {
         Box(modifier = Modifier
-            .fillMaxWidth()
-            .height(56.dp)
-            .padding(16.dp),
+          .fillMaxWidth()
+          .height(56.dp)
+          .padding(16.dp),
         ) {
           Text(
             // TODO formatterを適用する
@@ -54,15 +50,11 @@ fun BulletListScreen(
                 .fillMaxWidth()
                 .height(56.dp),
               bullet = uiState.bullets[i],
-              onBulletClick = { presenter.onBulletClicked(it) },
+              onBulletClick = { viewModel.onBulletClicked(it) },
             )
           }
         }
       }
     }
-  }
-
-  DisposableEffect(lifecycleOwner) {
-    onDispose { presenter.dispose() }
   }
 }

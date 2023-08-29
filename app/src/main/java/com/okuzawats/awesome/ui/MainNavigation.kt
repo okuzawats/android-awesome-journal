@@ -7,10 +7,10 @@ sealed interface MainNavigation {
   /**
    * Bullet一覧画面
    */
-  data object BulletList : MainNavigation
+  object BulletList : MainNavigation
 
   /**
    * Bullet編集画面
    */
-  data object BulletEdit : MainNavigation
+  object BulletEdit : MainNavigation
 }

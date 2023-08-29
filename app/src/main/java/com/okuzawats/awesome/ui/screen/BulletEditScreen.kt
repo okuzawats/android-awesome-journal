@@ -15,9 +15,9 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.okuzawats.awesome.R
-import com.okuzawats.awesome.presenter.bulletedit.BulletEditPresenter
-import org.koin.compose.koinInject
+import com.okuzawats.awesome.presenter.bulletedit.BulletEditViewModel
 
 /**
  * Bullet作成・編集画面
@@ -28,7 +28,7 @@ import org.koin.compose.koinInject
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BulletEditScreen(
-  presenter: BulletEditPresenter = koinInject(),
+  viewModel: BulletEditViewModel = hiltViewModel(),
   bulletId: String?,
   onDisposed: () -> Unit,
 ) {
@@ -47,7 +47,7 @@ fun BulletEditScreen(
         )
       },
       navigationIcon = {
-        IconButton(onClick = { presenter.onBackClicked() }) {
+        IconButton(onClick = { viewModel.onBackClicked() }) {
           Image(
             painter = painterResource(id = R.drawable.baseline_arrow_back_24),
             colorFilter = ColorFilter.tint(Color.Black),
@@ -57,7 +57,7 @@ fun BulletEditScreen(
         }
       },
       actions = {
-        IconButton(onClick = { presenter.onSaveClicked() }) {
+        IconButton(onClick = { viewModel.onSaveClicked() }) {
           Image(
             painter = painterResource(id = R.drawable.baseline_save_24),
             colorFilter = ColorFilter.tint(Color.Black),
