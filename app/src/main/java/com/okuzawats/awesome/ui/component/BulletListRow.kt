@@ -22,7 +22,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.okuzawats.awesome.R
 import com.okuzawats.awesome.domain.bullet.Bullet
-import java.util.UUID
 
 /**
  * Bullet 1つを表示するComposable
