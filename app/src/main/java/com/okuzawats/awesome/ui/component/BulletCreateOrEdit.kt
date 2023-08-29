@@ -2,10 +2,9 @@ package com.okuzawats.awesome.ui.component
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
@@ -44,14 +43,21 @@ fun BulletCreateOrEdit(
         }
       },
       actions = {
-        Image(
-          painter = painterResource(id = R.drawable.baseline_save_24),
-          colorFilter = ColorFilter.tint(Color.Black),
-          contentDescription = "save", // TODO
-          modifier = Modifier.padding(8.dp),
-        )
+        IconButton(
+          onClick = {
+            println("Clicked!")
+          }
+        ) {
+          Image(
+            painter = painterResource(id = R.drawable.baseline_save_24),
+            colorFilter = ColorFilter.tint(Color.Black),
+            contentDescription = "save", // TODO
+            modifier = Modifier.padding(8.dp),
+          )
+        }
       },
     )
+    // TODO 編集領域を実装する
     Text("test")
   }
 }
