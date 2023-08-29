@@ -6,6 +6,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -26,22 +30,31 @@ fun MainScreen(
 ) {
   val navController = rememberNavController()
 
+  // TODO BottomAppBarの管理方法を考える
+  var isBottomAppBarVisible: Boolean by remember { mutableStateOf(true) }
+
   LaunchedEffect(Unit) {
     navigator.toEdit
-      .onEach { navController.navigate(route = "${MainNavigation.BulletEdit}/${it.id}") }
+      .onEach {
+        isBottomAppBarVisible = false
+        navController.navigate(route = "${MainNavigation.BulletEdit}/${it.id}")
+      }
       .launchIn(this)
   }
 
   MaterialTheme {
     Scaffold(
       bottomBar = {
-        AwesomeBottomAppBar(
-          modifier = Modifier.fillMaxWidth(),
-          onFabClicked = {
-            // TODO MainScreen用のPresenterを作成する。
-            navController.navigate("${MainNavigation.BulletEdit}/${null}")
-          },
-        )
+        if (isBottomAppBarVisible) {
+          AwesomeBottomAppBar(
+            modifier = Modifier.fillMaxWidth(),
+            onFabClicked = {
+              // TODO MainScreen用のPresenterを作成する。
+              isBottomAppBarVisible = false
+              navController.navigate("${MainNavigation.BulletEdit}/${null}")
+            },
+          )
+        }
       },
     ) { padding ->
       NavHost(
@@ -67,7 +80,9 @@ fun MainScreen(
         ) {
           BulletCreateOrEdit(
             bulletId = it.requireArgument().getString("bullet_id", null),
-          )
+          ) {
+            isBottomAppBarVisible = true
+          }
         }
       }
     }
