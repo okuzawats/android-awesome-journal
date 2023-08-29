@@ -1,3 +1,5 @@
 <resources>
   <string name="app_name">Awesome</string>
+
+  <string name="create_new">新規作成</string>
 </resources>

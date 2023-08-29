@@ -4,6 +4,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.ui.res.stringResource
+import com.okuzawats.awesome.R
 
 /**
  * Bullet作成・編集画面
@@ -24,7 +26,7 @@ fun BulletCreateOrEdit(
     if (bulletId != null) {
       Text(bulletId)
     } else {
-      Text("新規作成")
+      Text(stringResource(id = R.string.create_new))
     }
   }
 }
