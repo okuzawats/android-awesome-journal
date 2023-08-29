@@ -16,8 +16,6 @@ val awesomeModule = module {
   factory { BulletEditPresenter(get()) }
   factory { BulletListPresenter(get(), get(), get()) }
   factory { BulletListReducer() }
-  // TODO 複数のNavigatorに対応させる
-  //  https://github.com/InsertKoinIO/koin/issues/749
   single { MainNavigator() } binds arrayOf(BulletEditNavigator::class, BulletListNavigator::class)
   single { DefaultBulletRepository() } bind BulletRepository::class
 }
