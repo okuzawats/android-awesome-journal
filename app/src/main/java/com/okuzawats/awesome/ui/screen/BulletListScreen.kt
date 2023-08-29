@@ -24,7 +24,7 @@ import org.koin.compose.koinInject
  * Bulletを一覧表示するComposable
  */
 @Composable
-fun BulletList(
+fun BulletListScreen(
   presenter: BulletListPresenter = koinInject(),
   lifecycleOwner: LifecycleOwner = LocalLifecycleOwner.current,
 ) {

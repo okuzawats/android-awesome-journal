@@ -17,9 +17,9 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.okuzawats.awesome.ui.component.AwesomeBottomAppBar
-import com.okuzawats.awesome.ui.component.BulletCreateOrEdit
+import com.okuzawats.awesome.ui.screen.BulletEditScreen
 import com.okuzawats.awesome.ui.navigator.MainNavigator
-import com.okuzawats.awesome.ui.screen.BulletList
+import com.okuzawats.awesome.ui.screen.BulletListScreen
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import org.koin.compose.koinInject
@@ -66,7 +66,7 @@ fun MainScreen(
         composable(
           route = MainNavigation.BulletList.toString(),
         ) {
-          BulletList()
+          BulletListScreen()
         }
         /* Bullet新規作成・編集画面 */
         composable(
@@ -78,7 +78,7 @@ fun MainScreen(
             }
           ),
         ) {
-          BulletCreateOrEdit(
+          BulletEditScreen(
             bulletId = it.requireArgument().getString("bullet_id", null),
             onBackTapped = {
               navController.popBackStack()
