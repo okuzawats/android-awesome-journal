@@ -16,6 +16,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.okuzawats.awesome.R
+import com.okuzawats.awesome.presenter.bulletedit.BulletEditPresenter
+import org.koin.compose.koinInject
 
 /**
  * Bullet作成・編集画面
@@ -26,6 +28,7 @@ import com.okuzawats.awesome.R
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BulletEditScreen(
+  presenter: BulletEditPresenter = koinInject(),
   bulletId: String?,
   onBackTapped: () -> Unit,
   onDisposed: () -> Unit,
@@ -55,12 +58,7 @@ fun BulletEditScreen(
         }
       },
       actions = {
-        IconButton(
-          onClick = {
-            // TODO
-            println("Clicked!")
-          }
-        ) {
+        IconButton(onClick = { presenter.onSaveClicked() }) {
           Image(
             painter = painterResource(id = R.drawable.baseline_save_24),
             colorFilter = ColorFilter.tint(Color.Black),

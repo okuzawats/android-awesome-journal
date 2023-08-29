@@ -16,4 +16,8 @@ class BulletEditPresenter : AwesomePresenter<BulletEditState>() {
 
     return BulletEditText(text = text)
   }
+
+  fun onSaveClicked() {
+    println("on save clicked!")
+  }
 }
