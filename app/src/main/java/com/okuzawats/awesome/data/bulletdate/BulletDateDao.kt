@@ -2,6 +2,7 @@ package com.okuzawats.awesome.data.bulletdate
 
 import androidx.room.Dao
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 
 /**
@@ -18,6 +19,6 @@ interface BulletDateDao {
   /**
    * [bulletDate]を保存する。
    */
-  @Insert
+  @Insert(onConflict = OnConflictStrategy.IGNORE)
   fun save(bulletDate: BulletDateEntity)
 }
