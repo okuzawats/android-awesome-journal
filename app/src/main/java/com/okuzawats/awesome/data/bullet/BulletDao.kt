@@ -1,10 +1,9 @@
-package com.okuzawats.awesome.data.dao
+package com.okuzawats.awesome.data.bullet
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
-import com.okuzawats.awesome.data.entity.BulletEntity
 
 /**
  * [BulletEntity]のDatabase Access Object

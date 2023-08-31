@@ -1,9 +1,8 @@
-package com.okuzawats.awesome.data.dao
+package com.okuzawats.awesome.data.bulletdate
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import com.okuzawats.awesome.data.entity.BulletDateEntity
 
 /**
  * [BulletDateEntity]のDatabase Access Object

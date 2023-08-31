@@ -1,4 +1,4 @@
-package com.okuzawats.awesome.data.entity
+package com.okuzawats.awesome.data.bulletdate
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

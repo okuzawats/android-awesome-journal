@@ -1,6 +1,6 @@
-package com.okuzawats.awesome.data.repository
+package com.okuzawats.awesome.data.bulletdate
 
-import com.okuzawats.awesome.data.dao.BulletDateDao
+import com.okuzawats.awesome.data.bulletdate.BulletDateDao
 import com.okuzawats.awesome.domain.bulletdate.BulletDate
 import com.okuzawats.awesome.domain.bulletdate.BulletDateRepository
 import javax.inject.Inject
