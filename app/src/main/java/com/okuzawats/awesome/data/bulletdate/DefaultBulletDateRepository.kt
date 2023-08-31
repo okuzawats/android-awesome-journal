@@ -13,15 +13,10 @@ class DefaultBulletDateRepository @Inject constructor(
 ) : BulletDateRepository {
   override suspend fun getAll(): List<BulletDate> {
     return withContext(Dispatchers.IO) {
-      // テスト用のデータ
-      bulletDataDao
-        .save(
-          BulletDateEntity("", "")
-        )
+      // TODO mapの実装
       bulletDataDao
         .getAll()
         .map {
-          // TODO
           BulletDate(
             UUID.randomUUID(),
             Date(),
@@ -31,10 +26,20 @@ class DefaultBulletDateRepository @Inject constructor(
   }
 
   override suspend fun getCurrentDate(): BulletDate {
-    TODO("Not yet implemented")
+    return withContext(Dispatchers.IO) {
+      BulletDate(
+        UUID.randomUUID(),
+        Date(),
+      )
+    }
   }
 
   override suspend fun createCurrentDate() {
-    TODO("Not yet implemented")
+    // TODO 日付の取得処理の実装
+    withContext(Dispatchers.IO) {
+      bulletDataDao.save(
+        BulletDateEntity("id", "date")
+      )
+    }
   }
 }

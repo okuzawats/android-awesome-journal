@@ -10,6 +10,7 @@ import dagger.hilt.android.testing.HiltTestApplication
 import kotlinx.coroutines.test.runTest
 import org.junit.After
 import org.junit.Before
+import org.junit.Ignore
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -29,8 +30,6 @@ class DefaultBulletDateRepositoryTest {
 
   @Inject lateinit var sut: BulletDateRepository
 
-  @Inject lateinit var bulletListDao: BulletDateDao
-
   @Inject lateinit var database: AwesomeDatabase
 
   @Before
@@ -44,17 +43,36 @@ class DefaultBulletDateRepositoryTest {
   }
 
   @Test
-  fun getAll() = runTest {
-    val actual = sut.getAll()
+  fun hasEmptyItemByDefault() = runTest {
+    val all = sut.getAll()
 
-    assertThat(actual).hasSize(1)
+    assertThat(all).isEmpty()
   }
 
   @Test
-  fun getCurrentDate() {
+  fun hasOneItemAfterCreatingCurrentDate() = runTest {
+    sut.createCurrentDate()
+
+    val all = sut.getAll()
+
+    assertThat(all).hasSize(1)
   }
 
   @Test
-  fun createCurrentDate() {
+  fun doNotInsertCurrentDateTwice() = runTest {
+    sut.createCurrentDate()
+    sut.createCurrentDate()
+
+    val all = sut.getAll()
+
+    assertThat(all).hasSize(1)
+  }
+
+  @Ignore("TODO")
+  @Test
+  fun currentDateHasDateOfToday() = runTest {
+    val today = sut.getCurrentDate()
+
+    assertThat(today.date).isEqualTo("") // TODO
   }
 }
