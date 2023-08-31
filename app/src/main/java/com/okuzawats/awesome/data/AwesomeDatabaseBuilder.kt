@@ -10,10 +10,12 @@ class AwesomeDatabaseBuilder @Inject constructor(
   private val context: Context,
 ) {
   fun build(): AwesomeDatabase {
-    return Room.databaseBuilder(
-      context = context,
-      klass = AwesomeDatabase::class.java,
-      name = "awesome_database",
-    ).build()
+    return Room
+      .databaseBuilder(
+        context = context,
+        klass = AwesomeDatabase::class.java,
+        name = "awesome_database",
+      )
+      .build()
   }
 }
