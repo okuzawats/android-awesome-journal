@@ -1,6 +1,5 @@
 package com.okuzawats.awesome.data.bullet
 
-import com.okuzawats.awesome.data.bullet.BulletDao
 import com.okuzawats.awesome.domain.bullet.Bullet
 import com.okuzawats.awesome.domain.bullet.BulletRepository
 import com.okuzawats.awesome.domain.bulletdate.BulletDate
