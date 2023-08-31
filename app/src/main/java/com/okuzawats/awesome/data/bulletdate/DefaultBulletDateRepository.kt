@@ -12,16 +12,8 @@ class DefaultBulletDateRepository @Inject constructor(
   private val bulletDataDao: BulletDateDao,
 ) : BulletDateRepository {
   override suspend fun getAll(): List<BulletDate> {
-//    return bulletDataDao
-//      .getAll()
-//      .map {
-//        // TODO
-//        BulletDate(
-//          UUID.randomUUID(),
-//          Date(),
-//        )
-//      }
     return withContext(Dispatchers.IO) {
+      // テスト用のデータ
       bulletDataDao
         .save(
           BulletDateEntity("", "")
@@ -35,12 +27,6 @@ class DefaultBulletDateRepository @Inject constructor(
             Date(),
           )
         }
-//      listOf(
-//        BulletDate(
-//          UUID.randomUUID(),
-//          Date(),
-//        )
-//      )
     }
   }
 
