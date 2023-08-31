@@ -1,7 +1,6 @@
 package com.okuzawats.awesome.data.bullet
 
 import com.okuzawats.awesome.data.AwesomeDatabase
-import com.okuzawats.awesome.data.bullet.BulletDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

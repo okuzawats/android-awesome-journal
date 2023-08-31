@@ -1,6 +1,5 @@
-package com.okuzawats.awesome.di
+package com.okuzawats.awesome.presenter.bulletedit.navigator
 
-import com.okuzawats.awesome.presenter.bulletedit.navigator.BulletEditNavigator
 import com.okuzawats.awesome.ui.navigator.MainNavigator
 import dagger.Binds
 import dagger.Module
