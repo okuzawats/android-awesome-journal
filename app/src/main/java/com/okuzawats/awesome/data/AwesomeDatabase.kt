@@ -7,7 +7,9 @@ import com.okuzawats.awesome.data.bulletdate.BulletDateDao
 import com.okuzawats.awesome.data.bulletdate.BulletDateEntity
 import com.okuzawats.awesome.data.bullet.BulletEntity
 
-@Database(entities = [BulletDateEntity::class, BulletEntity::class], version = 1)
+// schemaのexportを無効化している（デフォルトは有効）
+// see https://developer.android.com/reference/androidx/room/Database#getExportSchema()
+@Database(entities = [BulletDateEntity::class, BulletEntity::class], version = 1, exportSchema = false)
 abstract class AwesomeDatabase : RoomDatabase() {
   /**
    * [BulletDateEntity]のDaoを返す。
