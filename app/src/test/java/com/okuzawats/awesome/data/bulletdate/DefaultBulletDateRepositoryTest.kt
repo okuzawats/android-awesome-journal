@@ -2,7 +2,6 @@ package com.okuzawats.awesome.data.bulletdate
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.google.common.truth.Truth.assertThat
-import com.okuzawats.awesome.data.AwesomeDatabase
 import com.okuzawats.awesome.domain.bulletdate.BulletDateRepository
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
@@ -28,9 +27,10 @@ class DefaultBulletDateRepositoryTest {
   @get:Rule
   var hiltRule = HiltAndroidRule(this)
 
-  @Inject lateinit var sut: BulletDateRepository
+  @Inject
+  lateinit var sut: BulletDateRepository
 
-  @Inject lateinit var database: AwesomeDatabase
+  // @Inject lateinit var database: AwesomeDatabase
 
   @Before
   fun setUp() {
@@ -39,7 +39,7 @@ class DefaultBulletDateRepositoryTest {
 
   @After
   fun tearDown() {
-    database.close()
+    // database.close()
   }
 
   @Test
