@@ -7,6 +7,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.components.SingletonComponent
 import dagger.hilt.testing.TestInstallIn
+import javax.inject.Singleton
 
 @Module
 @TestInstallIn(
@@ -15,7 +16,8 @@ import dagger.hilt.testing.TestInstallIn
 )
 class FakeBulletDateDaoModule {
   @Provides
-  fun provideBulletDateDao(fakeAwesomeDatabase: AwesomeDatabase): BulletDateDao {
-    return fakeAwesomeDatabase.bulletDateDao()
+  @Singleton
+  fun provideBulletDateDao(awesomeDatabase: AwesomeDatabase): BulletDateDao {
+    return awesomeDatabase.bulletDateDao()
   }
 }
