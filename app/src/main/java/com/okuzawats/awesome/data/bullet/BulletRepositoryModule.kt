@@ -1,4 +1,4 @@
-package com.okuzawats.awesome.di
+package com.okuzawats.awesome.data.bullet
 
 import com.okuzawats.awesome.domain.bullet.BulletRepository
 import com.okuzawats.awesome.repository.DefaultBulletRepository

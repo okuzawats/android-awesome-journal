@@ -1,4 +1,4 @@
-package com.okuzawats.awesome.di
+package com.okuzawats.awesome.data
 
 import com.okuzawats.awesome.data.AwesomeDatabase
 import com.okuzawats.awesome.data.AwesomeDatabaseBuilder
