@@ -1,6 +1,8 @@
 plugins {
   id("com.android.library")
   id("org.jetbrains.kotlin.android")
+  id("org.jetbrains.kotlin.kapt")
+  id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -40,6 +42,16 @@ android {
 dependencies {
   implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
   implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
-  testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
+  implementation("com.google.dagger:hilt-android:2.47")
+  kapt("com.google.dagger:hilt-compiler:2.47")
+
   testImplementation("junit:junit:4.13.2")
+  testImplementation("androidx.test.ext:junit-ktx:1.1.5")
+  testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
+  testImplementation("com.google.truth:truth:1.1.4")
+  testImplementation("io.mockk:mockk:1.13.1")
+  testImplementation("app.cash.turbine:turbine:1.0.0")
+  testImplementation("org.robolectric:robolectric:4.10.3")
+  testImplementation("com.google.dagger:hilt-android-testing:2.47")
+  kaptTest("com.google.dagger:hilt-android-compiler:2.47")
 }
