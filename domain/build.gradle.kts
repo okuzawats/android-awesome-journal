@@ -30,8 +30,16 @@ android {
   kotlinOptions {
     jvmTarget = JavaVersion.VERSION_17.toString()
   }
+  packaging {
+    // kotlinx-coroutines-coreのデバッグ機能を除外
+    // https://github.com/Kotlin/kotlinx.coroutines#avoiding-including-the-debug-infrastructure-in-the-resulting-apk
+    resources.excludes += "DebugProbesKt.bin"
+  }
 }
 
 dependencies {
+  implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+  implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+  testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
   testImplementation("junit:junit:4.13.2")
 }
