@@ -35,38 +35,38 @@ class DefaultBulletRepositoryTest {
   lateinit var sut: BulletRepository
 
   @Before
-    fun setUp() {
-      hiltRule.inject()
-    }
+  fun setUp() {
+    hiltRule.inject()
+  }
 
-    @After
-    fun tearDown() {
-    }
+  @After
+  fun tearDown() {
+  }
 
-    @Test
-    fun hasEmptyItemByDefault() = runTest {
-      val all = sut.getBulletsAt(BulletDate(UUID.randomUUID(), Date()))
+  @Test
+  fun hasEmptyItemByDefault() = runTest {
+    val all = sut.getBulletsAt(BulletDate(UUID.randomUUID(), Date()))
 
-      assertThat(all).isEmpty()
-    }
+    assertThat(all).isEmpty()
+  }
 
-    @Test
-    fun hasOneItemAfterCreate() = runTest {
-      sut.create(Bullet("id", "text", true))
+  @Test
+  fun hasOneItemAfterCreate() = runTest {
+    sut.create(Bullet("id", "text", true))
 
-      val all = sut.getBulletsAt(BulletDate(UUID.randomUUID(), Date()))
+    val all = sut.getBulletsAt(BulletDate(UUID.randomUUID(), Date()))
 
-      assertThat(all).hasSize(1)
-    }
+    assertThat(all).hasSize(1)
+  }
 
   @Ignore("TODO")
-    @Test
-    fun updateAlterColumn() = runTest {
-      sut.create(Bullet("id", "text", true))
-      sut.update(Bullet("id", "new_text", true))
+  @Test
+  fun updateAlterColumn() = runTest {
+    sut.create(Bullet("id", "text", true))
+    sut.update(Bullet("id", "new_text", true))
 
-      val all = sut.getBulletsAt(BulletDate(UUID.randomUUID(), Date()))
+    val all = sut.getBulletsAt(BulletDate(UUID.randomUUID(), Date()))
 
-      assertThat(all[0].text).isEqualTo("new_text")
-    }
+    assertThat(all[0].text).isEqualTo("new_text")
+  }
 }
