@@ -1,4 +1,4 @@
-package com.okuzawats.awesome.domain.done
+package com.okuzawats.awesome.domain.undone
 
 import kotlinx.coroutines.flow.Flow
 
