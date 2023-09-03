@@ -49,6 +49,7 @@ android {
 }
 
 dependencies {
+  implementation project(":domain")
   implementation platform("org.jetbrains.kotlin:kotlin-bom:1.8.0")
 
   implementation "androidx.core:core-ktx:1.10.1"
@@ -78,6 +79,8 @@ dependencies {
   testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3"
   testImplementation "org.robolectric:robolectric:4.10.3"
   testImplementation "com.google.truth:truth:1.1.4"
+  testImplementation "io.mockk:mockk:1.13.1"
+  testImplementation "app.cash.turbine:turbine:1.0.0"
 
   debugImplementation "androidx.compose.ui:ui-tooling"
   debugImplementation "androidx.compose.ui:ui-test-manifest"

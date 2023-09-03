@@ -9,5 +9,5 @@ interface DoneToDoUseCase {
   /**
    * 完了状態となった時にtrueをemitする。ただし、完了状態の保存に失敗した場合はその後falseをemitする。
    */
-  suspend operator fun invoke(): Flow<Boolean>
+  suspend operator fun invoke(id: Long): Flow<DoneState>
 }

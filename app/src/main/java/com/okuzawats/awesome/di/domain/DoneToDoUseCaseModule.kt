@@ -1,5 +1,7 @@
-package com.okuzawats.awesome.domain.done
+package com.okuzawats.awesome.di.domain
 
+import com.okuzawats.awesome.domain.done.DefaultDoneToDoUseCase
+import com.okuzawats.awesome.domain.done.DoneToDoUseCase
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

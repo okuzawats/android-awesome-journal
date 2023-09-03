@@ -39,13 +39,23 @@ class DoneToDoUseCaseTest {
   }
 
   @Test
-  operator fun invoke() = runTest {
-    sut.invoke().test {
+  fun test_invoke_success() = runTest {
+    sut.invoke(1L).test {
       val first = awaitItem()
-      assertThat(first).isTrue()
+      assertThat(first).isEqualTo(DoneState.Done)
+
+      awaitComplete()
+    }
+  }
+
+  @Test
+  fun test_invoke_failure() = runTest {
+    sut.invoke(2L).test {
+      val first = awaitItem()
+      assertThat(first).isEqualTo(DoneState.Done)
 
       val second = awaitItem()
-      assertThat(second).isFalse()
+      assertThat(second).isEqualTo(DoneState.ToDo)
 
       awaitComplete()
     }

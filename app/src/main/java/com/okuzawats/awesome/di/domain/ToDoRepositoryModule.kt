@@ -1,5 +1,6 @@
-package com.okuzawats.awesome.domain.done
+package com.okuzawats.awesome.di.domain
 
+import com.okuzawats.awesome.domain.done.ToDoRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -10,6 +11,10 @@ import dagger.hilt.components.SingletonComponent
 class ToDoRepositoryModule {
   @Provides
   fun provideToDoRepository(): ToDoRepository {
-    return object : ToDoRepository {}
+    return object : ToDoRepository {
+      override fun doneToDo(id: Long): Result<Unit> {
+        TODO("Not yet implemented")
+      }
+    }
   }
 }
