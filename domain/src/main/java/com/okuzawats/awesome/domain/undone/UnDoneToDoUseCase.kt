@@ -9,5 +9,5 @@ interface UnDoneToDoUseCase {
   /**
    * 未完了状態となった時にfalseをemitする。ただし、完了状態の保存に失敗した場合はその後trueをemitする。
    */
-  suspend operator fun invoke(): Flow<Boolean>
+  suspend operator fun invoke(id: Long): Flow<UnDoneState>
 }

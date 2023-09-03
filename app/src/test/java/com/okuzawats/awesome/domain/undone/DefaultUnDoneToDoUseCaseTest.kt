@@ -1,4 +1,4 @@
-package com.okuzawats.awesome.domain.done
+package com.okuzawats.awesome.domain.undone
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import app.cash.turbine.test
@@ -15,8 +15,8 @@ import org.junit.runner.RunWith
 import org.robolectric.annotation.Config
 import javax.inject.Inject
 
-const val ID_DONE_TODO_SUCCESS = 1L
-const val ID_DONE_TODO_FAILURE = 2L
+const val ID_UN_DONE_TO_DO_SUCCESS = 1L
+const val ID_UN_DONE_TO_DO_FAILURE = 2L
 
 @HiltAndroidTest
 @Config(
@@ -24,13 +24,13 @@ const val ID_DONE_TODO_FAILURE = 2L
   manifest = Config.NONE,
 )
 @RunWith(AndroidJUnit4::class)
-class DefaultDoneToDoUseCaseTest {
+class DefaultUnDoneToDoUseCaseTest {
 
   @get:Rule
   var hiltRule = HiltAndroidRule(this)
 
   @Inject
-  lateinit var sut: DoneToDoUseCase
+  lateinit var sut: UnDoneToDoUseCase
 
   @Before
   fun setUp() {
@@ -42,23 +42,23 @@ class DefaultDoneToDoUseCaseTest {
   }
 
   @Test
-  fun emits_done_only_if_saved_successfully() = runTest {
-    sut.invoke(ID_DONE_TODO_SUCCESS).test {
+  fun emits_todo_only_if_saved_successfully() = runTest {
+    sut.invoke(ID_UN_DONE_TO_DO_SUCCESS).test {
       val first = awaitItem()
-      assertThat(first).isEqualTo(DoneState.Done)
+      assertThat(first).isEqualTo(UnDoneState.ToDo)
 
       awaitComplete()
     }
   }
 
   @Test
-  fun emits_todo_after_emitting_done_if_save_failed() = runTest {
-    sut.invoke(ID_DONE_TODO_FAILURE).test {
+  fun emits_done_after_emitting_todo_if_save_failed() = runTest {
+    sut.invoke(ID_UN_DONE_TO_DO_FAILURE).test {
       val first = awaitItem()
-      assertThat(first).isEqualTo(DoneState.Done)
+      assertThat(first).isEqualTo(UnDoneState.ToDo)
 
       val second = awaitItem()
-      assertThat(second).isEqualTo(DoneState.ToDo)
+      assertThat(second).isEqualTo(UnDoneState.Done)
 
       awaitComplete()
     }

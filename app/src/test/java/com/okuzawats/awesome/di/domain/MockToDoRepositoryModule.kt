@@ -1,8 +1,5 @@
 package com.okuzawats.awesome.di.domain
 
-import com.okuzawats.awesome.domain.done.constant.ID_FAILURE
-import com.okuzawats.awesome.domain.done.constant.ID_SUCCESS
-import com.okuzawats.awesome.domain.done.ToDoRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.components.SingletonComponent
@@ -17,14 +14,27 @@ import io.mockk.mockk
 )
 class MockToDoRepositoryModule {
   @Provides
-  fun provideMockToDoRepository(): ToDoRepository {
-    return mockk<ToDoRepository>().also { repository ->
+  fun provideMockDoneToDoRepository(): com.okuzawats.awesome.domain.done.ToDoRepository {
+    return mockk<com.okuzawats.awesome.domain.done.ToDoRepository>().also { repository ->
       coEvery {
-        repository.doneToDo(ID_SUCCESS)
+        repository.doneToDo(com.okuzawats.awesome.domain.done.ID_DONE_TODO_SUCCESS)
       } returns Result.success(Unit)
 
       coEvery {
-        repository.doneToDo(ID_FAILURE)
+        repository.doneToDo(com.okuzawats.awesome.domain.done.ID_DONE_TODO_FAILURE)
+      } returns Result.failure(Throwable("failed to save"))
+    }
+  }
+
+  @Provides
+  fun provideMockUnDoneToDoRepository(): com.okuzawats.awesome.domain.undone.ToDoRepository {
+    return mockk<com.okuzawats.awesome.domain.undone.ToDoRepository>().also { repository ->
+      coEvery {
+        repository.unDoneToDo(com.okuzawats.awesome.domain.undone.ID_UN_DONE_TO_DO_SUCCESS)
+      } returns Result.success(Unit)
+
+      coEvery {
+        repository.unDoneToDo(com.okuzawats.awesome.domain.undone.ID_UN_DONE_TO_DO_FAILURE)
       } returns Result.failure(Throwable("failed to save"))
     }
   }
