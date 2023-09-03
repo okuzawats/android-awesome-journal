@@ -67,3 +67,13 @@ dependencies {
 kapt {
   correctErrorTypes = true // hilt
 }
+
+// FIXME コンパイルタスクのJVMのバージョンを固定するHack
+//  see https://qiita.com/Nabe1216/items/322caa7acf11dbe032ca
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>()
+  .configureEach {
+    kotlinOptions {
+      // targetCompatibilityと揃える
+      jvmTarget = JavaVersion.VERSION_17.toString()
+    }
+  }

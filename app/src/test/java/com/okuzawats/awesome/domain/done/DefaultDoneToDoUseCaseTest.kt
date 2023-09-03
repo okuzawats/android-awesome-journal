@@ -15,9 +15,6 @@ import org.junit.runner.RunWith
 import org.robolectric.annotation.Config
 import javax.inject.Inject
 
-const val ID_DONE_TODO_SUCCESS = 1L
-const val ID_DONE_TODO_FAILURE = 2L
-
 @HiltAndroidTest
 @Config(
   application = HiltTestApplication::class,
@@ -25,6 +22,10 @@ const val ID_DONE_TODO_FAILURE = 2L
 )
 @RunWith(AndroidJUnit4::class)
 class DefaultDoneToDoUseCaseTest {
+  companion object {
+    const val ID_DONE_TODO_SUCCESS = 1L
+    const val ID_DONE_TODO_FAILURE = 2L
+  }
 
   @get:Rule
   var hiltRule = HiltAndroidRule(this)
