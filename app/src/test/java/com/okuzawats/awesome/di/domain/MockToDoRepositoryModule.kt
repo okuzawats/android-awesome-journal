@@ -1,14 +1,13 @@
 package com.okuzawats.awesome.di.domain
 
-import com.okuzawats.awesome.domain.done.ID_FAILURE
-import com.okuzawats.awesome.domain.done.ID_SUCCESS
+import com.okuzawats.awesome.domain.done.constant.ID_FAILURE
+import com.okuzawats.awesome.domain.done.constant.ID_SUCCESS
 import com.okuzawats.awesome.domain.done.ToDoRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.components.SingletonComponent
 import dagger.hilt.testing.TestInstallIn
 import io.mockk.coEvery
-import io.mockk.every
 import io.mockk.mockk
 
 @Module

@@ -3,6 +3,8 @@ package com.okuzawats.awesome.domain.done
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import app.cash.turbine.test
 import com.google.common.truth.Truth.assertThat
+import com.okuzawats.awesome.domain.done.constant.ID_FAILURE
+import com.okuzawats.awesome.domain.done.constant.ID_SUCCESS
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import dagger.hilt.android.testing.HiltTestApplication
@@ -21,7 +23,7 @@ import javax.inject.Inject
   manifest = Config.NONE,
 )
 @RunWith(AndroidJUnit4::class)
-class DoneToDoUseCaseTest {
+class DefaultDoneToDoUseCaseTest {
 
   @get:Rule
   var hiltRule = HiltAndroidRule(this)

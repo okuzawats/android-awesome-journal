@@ -1,4 +1,4 @@
-package com.okuzawats.awesome.domain.done
+package com.okuzawats.awesome.domain.done.constant
 
 // DoneToDoUseCaseの実行が成功するID
 const val ID_SUCCESS = 1L
