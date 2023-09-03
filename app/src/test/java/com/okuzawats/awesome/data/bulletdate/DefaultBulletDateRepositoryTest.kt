@@ -30,8 +30,6 @@ class DefaultBulletDateRepositoryTest {
   @Inject
   lateinit var sut: BulletDateRepository
 
-  // @Inject lateinit var database: AwesomeDatabase
-
   @Before
   fun setUp() {
     hiltRule.inject()
@@ -39,7 +37,6 @@ class DefaultBulletDateRepositoryTest {
 
   @After
   fun tearDown() {
-    // database.close()
   }
 
   @Test
