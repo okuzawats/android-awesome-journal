@@ -7,6 +7,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.components.SingletonComponent
 import dagger.hilt.testing.TestInstallIn
+import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.mockk
 
@@ -19,11 +20,11 @@ class MockToDoRepositoryModule {
   @Provides
   fun provideMockToDoRepository(): ToDoRepository {
     return mockk<ToDoRepository>().also { repository ->
-      every {
+      coEvery {
         repository.doneToDo(ID_SUCCESS)
       } returns Result.success(Unit)
 
-      every {
+      coEvery {
         repository.doneToDo(ID_FAILURE)
       } returns Result.failure(Throwable("failed to save"))
     }

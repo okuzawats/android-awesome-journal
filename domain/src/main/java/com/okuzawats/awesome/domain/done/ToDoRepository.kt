@@ -9,5 +9,5 @@ interface ToDoRepository {
    *
    * @param id 対象となるToDoのID
    */
-  fun doneToDo(id: Long): Result<Unit>
+  suspend fun doneToDo(id: Long): Result<Unit>
 }

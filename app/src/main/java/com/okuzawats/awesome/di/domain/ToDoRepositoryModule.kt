@@ -12,7 +12,7 @@ class ToDoRepositoryModule {
   @Provides
   fun provideToDoRepository(): ToDoRepository {
     return object : ToDoRepository {
-      override fun doneToDo(id: Long): Result<Unit> {
+      override suspend fun doneToDo(id: Long): Result<Unit> {
         TODO("Not yet implemented")
       }
     }
