@@ -1,4 +1,4 @@
-package com.okuzawats.awesome
+package com.okuzawats.awesome.di.data
 
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
