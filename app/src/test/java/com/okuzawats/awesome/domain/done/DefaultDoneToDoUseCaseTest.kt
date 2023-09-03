@@ -43,7 +43,7 @@ class DefaultDoneToDoUseCaseTest {
   }
 
   @Test
-  fun emits_done_only_if_saved_successfully() = runTest {
+  fun emitsDoneOnlyIfSavedSuccessfully() = runTest {
     sut.invoke(ID_DONE_TODO_SUCCESS).test {
       val first = awaitItem()
       assertThat(first).isEqualTo(DoneState.Done)
@@ -53,7 +53,7 @@ class DefaultDoneToDoUseCaseTest {
   }
 
   @Test
-  fun emits_todo_after_emitting_done_if_save_failed() = runTest {
+  fun emitsToDoAfterEmittingDoneIfSaveFailed() = runTest {
     sut.invoke(ID_DONE_TODO_FAILURE).test {
       val first = awaitItem()
       assertThat(first).isEqualTo(DoneState.Done)
