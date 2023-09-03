@@ -1,8 +1,8 @@
 package com.okuzawats.awesome
 
 import com.okuzawats.awesome.data.AwesomeDatabase
-import com.okuzawats.awesome.data.bulletdate.BulletDateDao
-import com.okuzawats.awesome.data.bulletdate.BulletDateDaoModule
+import com.okuzawats.awesome.data.bullet.BulletDao
+import com.okuzawats.awesome.data.bullet.BulletDaoModule
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.components.SingletonComponent
@@ -12,12 +12,12 @@ import javax.inject.Singleton
 @Module
 @TestInstallIn(
   components = [SingletonComponent::class],
-  replaces = [BulletDateDaoModule::class],
+  replaces = [BulletDaoModule::class],
 )
-class FakeBulletDateDaoModule {
+class MockBulletDaoModule {
   @Provides
   @Singleton
-  fun provideBulletDateDao(awesomeDatabase: AwesomeDatabase): BulletDateDao {
-    return awesomeDatabase.bulletDateDao()
+  fun provideBulletDao(awesomeDatabase: AwesomeDatabase): BulletDao {
+    return awesomeDatabase.bulletDao()
   }
 }
