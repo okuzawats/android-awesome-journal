@@ -13,11 +13,11 @@ import dagger.hilt.testing.TestInstallIn
   components = [SingletonComponent::class],
   replaces = [AwesomeDatabaseModule::class],
 )
-class MockAwesomeDatabaseModule {
+class InMemoryAwesomeDatabaseModule {
   @Provides
   fun provideMockAwesomeDatabase(
-    mockAwesomeDatabaseBuilder: MockAwesomeDatabaseBuilder,
+    inMemoryAwesomeDatabaseBuilder: InMemoryAwesomeDatabaseBuilder,
   ): AwesomeDatabase {
-    return mockAwesomeDatabaseBuilder.build()
+    return inMemoryAwesomeDatabaseBuilder.build()
   }
 }

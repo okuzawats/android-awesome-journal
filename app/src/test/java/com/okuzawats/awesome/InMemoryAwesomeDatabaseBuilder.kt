@@ -7,7 +7,7 @@ import kotlinx.coroutines.asExecutor
 import kotlinx.coroutines.test.StandardTestDispatcher
 import javax.inject.Inject
 
-class MockAwesomeDatabaseBuilder @Inject constructor() {
+class InMemoryAwesomeDatabaseBuilder @Inject constructor() {
   fun build(): AwesomeDatabase {
     return Room
       .inMemoryDatabaseBuilder(
