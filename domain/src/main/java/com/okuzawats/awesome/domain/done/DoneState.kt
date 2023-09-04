@@ -1,14 +1,16 @@
 package com.okuzawats.awesome.domain.done
 
-// TODO data objectに変更する
+/**
+ * ToDoの完了状態を表す型
+ */
 sealed interface DoneState {
   /**
    * 未完了状態
    */
-  object ToDo : DoneState
+  data object ToDo : DoneState
 
   /**
    * 完了状態
    */
-  object Done : DoneState
+  data object Done : DoneState
 }

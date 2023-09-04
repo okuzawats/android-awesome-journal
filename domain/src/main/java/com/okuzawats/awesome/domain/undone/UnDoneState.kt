@@ -1,14 +1,16 @@
 package com.okuzawats.awesome.domain.undone
 
-// TODO data objectに変更する
+/**
+ * ToDoの完了状態を表す型
+ */
 sealed interface UnDoneState {
   /**
    * 未完了状態
    */
-  object ToDo : UnDoneState
+  data object ToDo : UnDoneState
 
   /**
    * 完了状態
    */
-  object Done : UnDoneState
+  data object Done : UnDoneState
 }
