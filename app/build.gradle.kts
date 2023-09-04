@@ -39,7 +39,7 @@ android {
     compose = true
   }
   composeOptions {
-    kotlinCompilerExtensionVersion = "1.4.3"
+    kotlinCompilerExtensionVersion = "1.5.3"
   }
   packagingOptions {
     resources.excludes += "/META-INF/{AL2.0,LGPL2.1}"
@@ -63,10 +63,10 @@ dependencies {
   implementation("androidx.compose.material3:material3")
 
   // TODO kspを使うようにする
-  implementation("com.google.dagger:hilt-android:2.47")
-  kapt("com.google.dagger:hilt-compiler:2.47")
-  testImplementation("com.google.dagger:hilt-android-testing:2.47")
-  kaptTest("com.google.dagger:hilt-android-compiler:2.47")
+  implementation("com.google.dagger:hilt-android:2.48")
+  kapt("com.google.dagger:hilt-compiler:2.48")
+  testImplementation("com.google.dagger:hilt-android-testing:2.48")
+  kaptTest("com.google.dagger:hilt-android-compiler:2.48")
 
   // TODO kspを使うようにする
   implementation("androidx.room:room-runtime:2.5.2")
