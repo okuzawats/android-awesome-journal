@@ -7,7 +7,8 @@ import kotlinx.coroutines.flow.Flow
  */
 interface DoneToDoUseCase {
   /**
-   * 完了状態となった時にtrueをemitする。ただし、完了状態の保存に失敗した場合はその後falseをemitする。
+   * ToDoを完了状態として[DoneState.Done]をemitする。
+   * ただし、完了状態の保存に失敗した場合はその後[DoneState.ToDo]をemitする。
    */
   suspend operator fun invoke(id: Long): Flow<DoneState>
 }
