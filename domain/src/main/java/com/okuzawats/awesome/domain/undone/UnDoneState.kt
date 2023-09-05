@@ -1,7 +1,7 @@
 package com.okuzawats.awesome.domain.undone
 
 /**
- * ToDoの完了状態を表す型
+ * ToDoの未完了状態を表す型
  */
 sealed interface UnDoneState {
   /**
