@@ -18,7 +18,7 @@ import dagger.hilt.components.SingletonComponent
 @InstallIn(SingletonComponent::class)
 class UnDoneToDoUseCaseModule {
   @Provides
-  fun bindUnDoneToDoUseCase(
+  fun provideUnDoneToDoUseCase(
     impl: DefaultUnDoneToDoUseCase,
   ): UnDoneToDoUseCase {
     return impl
