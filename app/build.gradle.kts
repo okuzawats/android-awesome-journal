@@ -48,6 +48,7 @@ android {
 
 dependencies {
   implementation(project(":domain"))
+  implementation(project(":data"))
   implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.0"))
 
   implementation("androidx.core:core-ktx:1.10.1")
