@@ -23,8 +23,8 @@ import javax.inject.Inject
 @RunWith(AndroidJUnit4::class)
 class DefaultUnDoneToDoUseCaseTest {
   companion object {
-    const val ID_UN_DONE_TO_DO_SUCCESS = 1L
-    const val ID_UN_DONE_TO_DO_FAILURE = 2L
+    const val ID_UN_DONE_TO_DO_SUCCESS = "1"
+    const val ID_UN_DONE_TO_DO_FAILURE = "2"
   }
 
   @get:Rule

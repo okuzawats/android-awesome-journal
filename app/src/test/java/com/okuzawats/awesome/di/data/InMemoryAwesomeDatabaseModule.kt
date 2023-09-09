@@ -1,7 +1,6 @@
 package com.okuzawats.awesome.di.data
 
 import com.okuzawats.awesome.data.AwesomeDatabase
-import com.okuzawats.awesome.data.AwesomeDatabaseModule
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.components.SingletonComponent

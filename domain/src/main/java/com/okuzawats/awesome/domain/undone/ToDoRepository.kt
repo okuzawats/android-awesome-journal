@@ -10,5 +10,5 @@ interface ToDoRepository {
    * @param id 対象となるToDoのID
    * @return 更新完了に成功した場合はisSuccess = true、失敗した場合はisSuccess = falseのResult型を返す。
    */
-  suspend fun unDoneToDo(id: Long): Result<Unit>
+  suspend fun unDoneToDo(id: String): Result<Unit>
 }

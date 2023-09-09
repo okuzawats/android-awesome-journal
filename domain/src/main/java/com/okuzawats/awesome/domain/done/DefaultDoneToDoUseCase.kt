@@ -7,7 +7,7 @@ import javax.inject.Inject
 class DefaultDoneToDoUseCase @Inject constructor(
   private val toDoRepository: ToDoRepository,
 ) : DoneToDoUseCase {
-  override suspend fun invoke(id: Long): Flow<DoneState> {
+  override suspend fun invoke(id: String): Flow<DoneState> {
     return flow {
       // ToDoを完了状態にする
       emit(DoneState.Done)

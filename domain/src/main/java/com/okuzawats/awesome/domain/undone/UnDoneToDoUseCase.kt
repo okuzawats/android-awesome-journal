@@ -10,5 +10,5 @@ interface UnDoneToDoUseCase {
    * ToDoを未完了状態として[UnDoneState.ToDo]をemitする。
    * ただし、完了状態の保存に失敗した場合はその後[UnDoneState.Done]をemitする。
    */
-  suspend operator fun invoke(id: Long): Flow<UnDoneState>
+  suspend operator fun invoke(id: String): Flow<UnDoneState>
 }

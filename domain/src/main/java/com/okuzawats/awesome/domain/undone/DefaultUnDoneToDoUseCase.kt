@@ -7,7 +7,7 @@ import javax.inject.Inject
 class DefaultUnDoneToDoUseCase @Inject constructor(
   private val toDoRepository: ToDoRepository,
 ) : UnDoneToDoUseCase {
-  override suspend fun invoke(id: Long): Flow<UnDoneState> {
+  override suspend fun invoke(id: String): Flow<UnDoneState> {
     return flow {
       // ToDoを未完了状態にする
       emit(UnDoneState.ToDo)
