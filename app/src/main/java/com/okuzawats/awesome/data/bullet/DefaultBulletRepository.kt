@@ -2,6 +2,7 @@ package com.okuzawats.awesome.data.bullet
 
 import com.okuzawats.awesome.domain.bullet.Bullet
 import com.okuzawats.awesome.domain.bullet.BulletRepository
+import com.okuzawats.awesome.domain.bullet.BulletType
 import com.okuzawats.awesome.domain.bulletdate.BulletDate
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -14,8 +15,10 @@ class DefaultBulletRepository @Inject constructor(
     // TODO
     return withContext(Dispatchers.IO) {
       bulletDao
-        .getAllBulletAt("id")
-        .map { Bullet("id", "text", true) }
+        .getAllBulletAt("date_id")
+        .map {
+          Bullet(id = it.id, text = it.text, type = BulletType.Task, done = true)
+        }
     }
   }
 
@@ -24,7 +27,7 @@ class DefaultBulletRepository @Inject constructor(
     return withContext(Dispatchers.IO) {
       bulletDao
         .getAllBulletAt("date_id")
-        .map { Bullet("id", "text", true) }
+        .map { Bullet("id", "text", BulletType.Task, true) }
     }
   }
 
@@ -32,10 +35,10 @@ class DefaultBulletRepository @Inject constructor(
     withContext(Dispatchers.IO) {
       bulletDao.save(
         BulletEntity(
-          id = "id",
-          dateId = "date_id",
-          type = "type",
-          text = "text",
+          id = bullet.id,
+          dateId = "date_id", // TODO
+          type = bullet.type.name, // TODO
+          text = bullet.text,
         )
       )
     }

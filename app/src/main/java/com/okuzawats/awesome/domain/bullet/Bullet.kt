@@ -6,5 +6,6 @@ package com.okuzawats.awesome.domain.bullet
 data class Bullet(
   val id: String,
   val text: String,
+  val type: BulletType,
   val done: Boolean,
 )

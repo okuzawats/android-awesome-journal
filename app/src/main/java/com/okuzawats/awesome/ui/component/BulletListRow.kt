@@ -22,6 +22,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.okuzawats.awesome.R
 import com.okuzawats.awesome.domain.bullet.Bullet
+import com.okuzawats.awesome.domain.bullet.BulletType
 
 /**
  * Bullet 1つを表示するComposable
@@ -65,7 +66,7 @@ fun BulletListRow(
 @Composable
 fun BulletListRow_withText() {
   BulletListRow(
-    bullet = Bullet(id = "random-uuid-123456", text = "text", done = false),
+    bullet = Bullet(id = "random-uuid-123456", text = "text", type = BulletType.Task, done = false),
     onBulletClick = {},
   )
 }
