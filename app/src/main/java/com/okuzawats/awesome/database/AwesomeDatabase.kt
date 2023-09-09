@@ -1,4 +1,4 @@
-package com.okuzawats.awesome.data
+package com.okuzawats.awesome.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase

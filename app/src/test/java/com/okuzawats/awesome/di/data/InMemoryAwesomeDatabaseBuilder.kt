@@ -2,7 +2,7 @@ package com.okuzawats.awesome.di.data
 
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
-import com.okuzawats.awesome.data.AwesomeDatabase
+import com.okuzawats.awesome.database.AwesomeDatabase
 import kotlinx.coroutines.asExecutor
 import kotlinx.coroutines.test.StandardTestDispatcher
 import javax.inject.Inject

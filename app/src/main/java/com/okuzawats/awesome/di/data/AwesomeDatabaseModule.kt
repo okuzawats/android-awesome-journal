@@ -1,7 +1,7 @@
 package com.okuzawats.awesome.di.data
 
-import com.okuzawats.awesome.data.AwesomeDatabase
-import com.okuzawats.awesome.data.AwesomeDatabaseBuilder
+import com.okuzawats.awesome.database.AwesomeDatabase
+import com.okuzawats.awesome.database.AwesomeDatabaseBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
