@@ -47,7 +47,7 @@ android {
 }
 
 dependencies {
-  implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.0"))
+  implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.9.10"))
 
   implementation("androidx.core:core-ktx:1.10.1")
   implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
