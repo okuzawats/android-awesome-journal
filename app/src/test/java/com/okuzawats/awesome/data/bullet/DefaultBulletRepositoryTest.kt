@@ -4,6 +4,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.google.common.truth.Truth.assertThat
 import com.okuzawats.awesome.domain.bullet.Bullet
 import com.okuzawats.awesome.domain.bullet.BulletRepository
+import com.okuzawats.awesome.domain.bullet.BulletType
 import com.okuzawats.awesome.domain.bulletdate.BulletDate
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
@@ -52,7 +53,7 @@ class DefaultBulletRepositoryTest {
 
   @Test
   fun hasOneItemAfterCreate() = runTest {
-    sut.create(Bullet("id", "text", true))
+    sut.create(Bullet("id", "text", BulletType.Task, true))
 
     val all = sut.getBulletsAt(BulletDate(UUID.randomUUID(), Date()))
 
@@ -62,8 +63,8 @@ class DefaultBulletRepositoryTest {
   @Ignore("TODO")
   @Test
   fun updateAlterColumn() = runTest {
-    sut.create(Bullet("id", "text", true))
-    sut.update(Bullet("id", "new_text", true))
+    sut.create(Bullet("id", "text", BulletType.Task, true))
+    sut.update(Bullet("id", "new_text", BulletType.Task, true))
 
     val all = sut.getBulletsAt(BulletDate(UUID.randomUUID(), Date()))
 
