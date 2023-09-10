@@ -1,7 +1,6 @@
 plugins {
   id("com.android.application")
   id("org.jetbrains.kotlin.android")
-  id("org.jetbrains.kotlin.kapt")
   id("com.google.devtools.ksp")
   id("com.google.dagger.hilt.android")
 }
@@ -79,10 +78,6 @@ dependencies {
   testImplementation("com.google.truth:truth:1.1.5")
   testImplementation("io.mockk:mockk:1.13.7")
   testImplementation("app.cash.turbine:turbine:1.0.0")
-}
-
-kapt {
-  correctErrorTypes = true // hilt
 }
 
 // FIXME コンパイルタスクのJVMのバージョンを固定するHack
