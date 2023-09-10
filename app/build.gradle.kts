@@ -48,6 +48,7 @@ android {
 
 dependencies {
   implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.9.10"))
+  testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test")
 
   implementation("androidx.core:core-ktx:1.12.0")
   implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
@@ -73,7 +74,6 @@ dependencies {
 
   testImplementation("junit:junit:4.13.2")
   testImplementation("androidx.test.ext:junit-ktx:1.1.5")
-  testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
   testImplementation("org.robolectric:robolectric:4.10.3")
   testImplementation("com.google.truth:truth:1.1.4")
   testImplementation("io.mockk:mockk:1.13.1")
