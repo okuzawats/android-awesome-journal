@@ -29,9 +29,10 @@ jobs:
 
       - name: xml report
         run: |
-          ./gradlew koverXmlReport
+          ./gradlew koverXmlReportDebug
 
       - name: upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
+        files: ./app/build/reports/kover/reportDebug.xml
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
