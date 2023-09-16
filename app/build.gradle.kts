@@ -1,8 +1,18 @@
 plugins {
   id("com.android.application")
   id("org.jetbrains.kotlin.android")
+  id("org.jetbrains.kotlinx.kover")
   id("com.google.devtools.ksp")
   id("com.google.dagger.hilt.android")
+  jacoco
+}
+
+tasks.withType<JacocoReport> {
+  reports {
+    csv.required.set(false)
+    html.required.set(true)
+    xml.required.set(true)
+  }
 }
 
 android {
@@ -23,6 +33,9 @@ android {
   }
 
   buildTypes {
+    debug {
+      enableUnitTestCoverage = true
+    }
     release {
       isMinifyEnabled = false
       proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
