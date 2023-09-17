@@ -1,3 +1,6 @@
+// 以下のコードを使用。
+// https://github.com/thsaravana/jacoco-android-playground/blob/main/jacoco/modules.gradle
+
 apply plugin: 'jacoco'
 
 jacoco {
