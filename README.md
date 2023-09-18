@@ -9,7 +9,9 @@ Android用のジャーナルアプリ「**Awesome Journal**」開発用リポジ
 - Android Studio Giraffe | 2022.3.1 or later
 - JDK 17
 
-## カバレッジ
+## Continuous Inspection
+
+[SonarCloud](https://sonarcloud.io/project/overview?id=okuzawats_android-awesome-journal)
 
 [Codecov](https://app.codecov.io/gh/okuzawats/android-awesome-journal)
 
