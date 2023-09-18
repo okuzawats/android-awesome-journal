@@ -6,7 +6,7 @@ Android用のジャーナルアプリ「**Awesome Journal**」開発用リポジ
 
 ## 環境
 
-- Android Studio Flamingo | 2022.2.1 Patch 2 or later
+- Android Studio Giraffe | 2022.3.1 or later
 - JDK 17
 
 ## カバレッジ
