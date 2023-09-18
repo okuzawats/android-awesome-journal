@@ -1,11 +1,8 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
   id("com.android.application")
   id("org.jetbrains.kotlin.android")
   id("com.google.devtools.ksp")
   id("com.google.dagger.hilt.android")
-//  jacoco
 }
 
 apply(from = "../jacoco/modules.gradle")
@@ -28,9 +25,6 @@ android {
   }
 
   buildTypes {
-//    debug {
-//      enableUnitTestCoverage = true
-//    }
     release {
       isMinifyEnabled = false
       proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
@@ -87,10 +81,6 @@ dependencies {
   testImplementation("io.mockk:mockk:1.13.7")
   testImplementation("app.cash.turbine:turbine:1.0.0")
 }
-
-//jacoco {
-//  toolVersion = "0.8.10"
-//}
 
 // FIXME コンパイルタスクのJVMのバージョンを固定するHack
 //  see https://qiita.com/Nabe1216/items/322caa7acf11dbe032ca
