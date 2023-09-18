@@ -1,11 +1,17 @@
 # Awesome Journal
 
+[![codecov](https://codecov.io/gh/okuzawats/android-awesome-journal/graph/badge.svg?token=B3SOKT47SC)](https://codecov.io/gh/okuzawats/android-awesome-journal)
+
 Android用のジャーナルアプリ「**Awesome Journal**」開発用リポジトリ。
 
 ## 環境
 
-- Android Studio Flamingo | 2022.2.1 Patch 2 or later
+- Android Studio Giraffe | 2022.3.1 or later
 - JDK 17
+
+## カバレッジ
+
+[Codecov](https://app.codecov.io/gh/okuzawats/android-awesome-journal)
 
 ## ADR
 
