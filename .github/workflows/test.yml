@@ -40,3 +40,14 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: ./app/build/reports/jacoco/debugCoverage/debugCoverage.xml
+
+      - name: sonarcloud
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.organization=okuzawats
+            -Dsonar.projectKey=okuzawats_android-awesome-journal
+            -Dsonar.coverage.jacoco.xmlReportPaths=./app/build/reports/jacoco/debugCoverage/debugCoverage.xml
