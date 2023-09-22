@@ -78,7 +78,7 @@ dependencies {
   testImplementation("androidx.test.ext:junit-ktx:1.1.5")
   testImplementation("org.robolectric:robolectric:4.10.3")
   testImplementation("com.google.truth:truth:1.1.5")
-  testImplementation("io.mockk:mockk:1.13.7")
+  testImplementation("io.mockk:mockk:1.13.8")
   testImplementation("app.cash.turbine:turbine:1.0.0")
 }
 
