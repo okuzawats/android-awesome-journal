@@ -55,10 +55,10 @@ dependencies {
   implementation("androidx.core:core-ktx:1.12.0")
   implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
   implementation("androidx.activity:activity-compose:1.7.2")
-  implementation("androidx.navigation:navigation-compose:2.7.2")
+  implementation("androidx.navigation:navigation-compose:2.7.3")
   implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
 
-  implementation(platform("androidx.compose:compose-bom:2023.09.00"))
+  implementation(platform("androidx.compose:compose-bom:2023.09.01"))
   implementation("androidx.compose.ui:ui")
   implementation("androidx.compose.ui:ui-graphics")
   implementation("androidx.compose.ui:ui-tooling-preview")
@@ -78,7 +78,7 @@ dependencies {
   testImplementation("androidx.test.ext:junit-ktx:1.1.5")
   testImplementation("org.robolectric:robolectric:4.10.3")
   testImplementation("com.google.truth:truth:1.1.5")
-  testImplementation("io.mockk:mockk:1.13.7")
+  testImplementation("io.mockk:mockk:1.13.8")
   testImplementation("app.cash.turbine:turbine:1.0.0")
 }
 
