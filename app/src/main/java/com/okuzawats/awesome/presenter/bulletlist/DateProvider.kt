@@ -5,7 +5,7 @@ import java.util.Date
 /**
  * [Date]を提供するための型
  */
-interface DateProvider {
+fun interface DateProvider {
   /**
    * 実行時の日付の[Date]型を返す
    */
