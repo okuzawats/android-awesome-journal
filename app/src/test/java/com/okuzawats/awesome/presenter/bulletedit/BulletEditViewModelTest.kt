@@ -5,7 +5,6 @@ import com.okuzawats.awesome.presenter.bulletedit.navigator.BulletEditNavigator
 import com.okuzawats.awesome.rule.MainDispatcherRule
 import io.mockk.coVerify
 import io.mockk.mockk
-import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -32,7 +31,7 @@ class BulletEditViewModelTest {
   }
 
   @Test
-  fun whenBackClickedThenPopBack() = runTest {
+  fun whenBackClickedThenPopBack() {
     sut.onBackClicked()
 
     coVerify(exactly = 1) {
@@ -41,7 +40,7 @@ class BulletEditViewModelTest {
   }
 
   @Test
-  fun whenSaveClickedThenSaveBullet() = runTest {
+  fun whenSaveClickedThenSaveBullet() {
     sut.onSaveClicked()
 
     coVerify(exactly = 1) {
