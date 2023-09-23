@@ -7,12 +7,6 @@ import com.okuzawats.awesome.domain.bulletdate.BulletDate
  */
 interface BulletRepository {
   /**
-   * すべて[Bullet]を取得する。
-   */
-  @Deprecated("use getBulletsAt instead.")
-  suspend fun getBullets(): List<Bullet>
-
-  /**
    * [date]に紐つくすべての[Bullet]を取得する。
    */
   suspend fun getBulletsAt(date: BulletDate): List<Bullet>

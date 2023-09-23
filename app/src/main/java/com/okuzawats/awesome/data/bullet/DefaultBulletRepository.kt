@@ -11,17 +11,6 @@ import javax.inject.Inject
 class DefaultBulletRepository @Inject constructor(
   private val bulletDao: BulletDao,
 ) : BulletRepository {
-  override suspend fun getBullets(): List<Bullet> {
-    // TODO
-    return withContext(Dispatchers.IO) {
-      bulletDao
-        .getAllBulletAt("date_id")
-        .map {
-          Bullet(id = it.id, text = it.text, type = BulletType.Task, done = true)
-        }
-    }
-  }
-
   override suspend fun getBulletsAt(date: BulletDate): List<Bullet> {
     // TODO
     return withContext(Dispatchers.IO) {
