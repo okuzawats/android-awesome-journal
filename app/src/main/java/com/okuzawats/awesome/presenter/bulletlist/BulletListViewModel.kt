@@ -26,7 +26,6 @@ class BulletListViewModel @Inject constructor(
   @Composable
   fun present(): BulletListState {
     LaunchedEffect(Unit) {
-      println("===== ${bulletRepository.getBullets()}")
       reducer.sendEvent(
         OnBulletLoaded(
           // TODO 仮
