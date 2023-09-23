@@ -40,7 +40,6 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: ./app/build/reports/jacoco/debugCoverage/debugCoverage.xml
-          fail_ci_if_error: false
 
       - name: sonarcloud
         uses: SonarSource/sonarcloud-github-action@master
