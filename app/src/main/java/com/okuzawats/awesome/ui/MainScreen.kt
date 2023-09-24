@@ -60,7 +60,11 @@ fun MainScreen(
     ModalNavigationDrawer(
       drawerState = drawerState,
       drawerContent = {
-        DayListScreen(isOpened = drawerState.isOpen)
+        DayListScreen(isOpened = drawerState.isOpen) {
+          drawerScope.launch {
+            drawerState.close()
+          }
+        }
       }
     ) {
       Scaffold(
