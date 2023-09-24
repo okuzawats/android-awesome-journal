@@ -8,6 +8,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.okuzawats.awesome.presenter.daylist.DayListViewModel
+import com.okuzawats.awesome.presenter.daylist.state.DayListState
 import com.okuzawats.awesome.ui.component.TopAppBar
 
 /**
@@ -19,6 +22,7 @@ import com.okuzawats.awesome.ui.component.TopAppBar
  */
 @Composable
 fun DayListScreen(
+  viewModel: DayListViewModel = hiltViewModel(),
   isOpened: Boolean,
   onBackClicked: () -> Unit,
 ) {
@@ -30,7 +34,15 @@ fun DayListScreen(
         .background(Color.White),
     ) {
       TopAppBar(onBackClicked = onBackClicked)
-      Text(text = "Day List")
+
+      when (viewModel.present()) {
+        is DayListState.DayList -> {
+          Text(text = "Day List")
+        }
+        is DayListState.Empty -> {
+          Text(text = "Empty List")
+        }
+      }
     }
   }
 }
