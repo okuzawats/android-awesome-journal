@@ -1,0 +1,44 @@
+name: Coverage Report
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    name: Test Coverage
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: setup jdk
+        uses: actions/setup-java@v3
+        with:
+          distribution: "zulu"
+          java-version: "17"
+      - name: execute unit test
+        run: |
+          chmod +x ./gradlew
+          ./gradlew testDebugUnitTest
+      - name: generate coverage report
+        run: ./gradlew debugCoverage
+      # レポートファイルの検出漏れがあったため、filesでファイルを指定している。
+      # レポートファイルを複数ファイルを指定する時は、
+      # "./coverage1.xml,./coverage2.xml"という形式で指定する。
+      # https://github.com/codecov/codecov-action
+      - name: upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./app/build/reports/jacoco/debugCoverage/debugCoverage.xml
+      - name: sonarcloud
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.organization=okuzawats
+            -Dsonar.projectKey=okuzawats_android-awesome-journal
+            -Dsonar.coverage.jacoco.xmlReportPaths=./app/build/reports/jacoco/debugCoverage/debugCoverage.xml
