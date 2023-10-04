@@ -69,7 +69,7 @@ dependencies {
   implementation("com.google.dagger:hilt-android:2.48.1")
   ksp("com.google.dagger:hilt-compiler:2.48")
   testImplementation("com.google.dagger:hilt-android-testing:2.48")
-  ksp("com.google.dagger:hilt-android-compiler:2.48")
+  ksp("com.google.dagger:hilt-android-compiler:2.48.1")
 
   implementation("androidx.room:room-runtime:2.5.2")
   ksp("androidx.room:room-compiler:2.5.2")
