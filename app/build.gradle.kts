@@ -41,7 +41,7 @@ android {
     compose = true
   }
   composeOptions {
-    kotlinCompilerExtensionVersion = "1.5.3"
+    kotlinCompilerExtensionVersion = "1.5.4"
   }
   packagingOptions {
     resources.excludes += "/META-INF/{AL2.0,LGPL2.1}"
@@ -49,7 +49,7 @@ android {
 }
 
 dependencies {
-  implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.9.10"))
+  implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.9.20"))
   testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test")
 
   implementation("androidx.core:core-ktx:1.12.0")
