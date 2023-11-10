@@ -71,8 +71,8 @@ dependencies {
   testImplementation("com.google.dagger:hilt-android-testing:2.48.1")
   ksp("com.google.dagger:hilt-android-compiler:2.48.1")
 
-  implementation("androidx.room:room-runtime:2.5.2")
-  ksp("androidx.room:room-compiler:2.5.2")
+  implementation("androidx.room:room-runtime:2.6.0")
+  ksp("androidx.room:room-compiler:2.6.0")
 
   testImplementation("junit:junit:4.13.2")
   testImplementation("androidx.test.ext:junit-ktx:1.1.5")
