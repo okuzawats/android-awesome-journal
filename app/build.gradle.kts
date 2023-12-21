@@ -66,7 +66,7 @@ dependencies {
   debugImplementation("androidx.compose.ui:ui-tooling")
   debugImplementation("androidx.compose.ui:ui-test-manifest")
 
-  implementation("com.google.dagger:hilt-android:2.48.1")
+  implementation("com.google.dagger:hilt-android:2.50")
   ksp("com.google.dagger:hilt-compiler:2.48.1")
   testImplementation("com.google.dagger:hilt-android-testing:2.48.1")
   ksp("com.google.dagger:hilt-android-compiler:2.48.1")
